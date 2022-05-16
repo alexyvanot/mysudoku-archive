@@ -1,14 +1,15 @@
 package com.intech.mysudoku.controllers;
 
+import java.awt.Checkbox;
+import java.awt.Label;
+
+import com.intech.mysudoku.config.Language;
+
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.AnchorPane;
-
-import java.awt.*;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class SettingsScreenController {
 
@@ -34,7 +35,7 @@ public class SettingsScreenController {
     @FXML
     Label selectedLanguageLabel;
     @FXML
-    ChoiceBox languageChoiceBox;
+    ChoiceBox<Language> languageChoiceBox;
     @FXML
     Label guiLabel;
     @FXML

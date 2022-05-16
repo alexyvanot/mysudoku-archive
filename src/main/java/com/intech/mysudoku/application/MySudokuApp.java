@@ -14,6 +14,11 @@ import javafx.stage.Stage;
 
 public class MySudokuApp extends Application {
 
+	@Override
+	public void init() throws Exception {
+		super.init();
+	}
+	
     @Override
     public void start(Stage primaryStage) throws Exception {
     	
@@ -48,6 +53,15 @@ public class MySudokuApp extends Application {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    
+    @Override
+    public void stop() throws Exception {
+    	super.stop();
+    }
+    
+    public static void main(String[] args) {
+    	Application.launch(args);
     }
 
 
