@@ -18,12 +18,12 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>13</version>
+            <version>11</version>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
-            <version>13</version>
+            <version>11</version>
         </dependency>
     </dependencies>
     <build>
@@ -46,7 +46,7 @@
                         <!-- Usage: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.intech.mysudoku.App</mainClass>
+                            <mainClass>com.intech.mysudoku.application.MySudokuApp</mainClass>
                         </configuration>
                     </execution>
                 </executions>
