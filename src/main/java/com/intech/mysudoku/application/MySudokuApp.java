@@ -25,8 +25,8 @@ public class MySudokuApp extends Application {
 		sudoku.create(Level.EASY);
 		Board sudokuBoard = sudoku.getBoard();
 		System.out.println(sudokuBoard);
-		Solver solveThisSukodu = new Solver();
-		solveThisSukodu.setBoard(sudokuBoard).solve(sudokuBoard.getCells(), 1);
+		Solver solveThisSudoku = new Solver();
+		solveThisSudoku.setBoard(sudokuBoard).solve(sudokuBoard.getCells(), 1);
 		System.out.println();
 		System.out.println(sudokuBoard);
     	

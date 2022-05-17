@@ -27,7 +27,7 @@
                 </Button>
                 <HBox prefHeight="140.0" prefWidth="450.0">
                     <children>
-                        <Button fx:id="settingsButton" onAction="#showSettings" mnemonicParsing="false" prefHeight="140.0" prefWidth="220.0" text="Settings">
+                        <Button fx:id="settingsButton" onAction="#handleShowSettings" mnemonicParsing="false" prefHeight="140.0" prefWidth="220.0" text="Settings">
                             <HBox.margin>
                                 <Insets right="10.0" />
                             </HBox.margin>
@@ -45,7 +45,7 @@
                         <Insets top="10.0" />
                     </padding>
                 </HBox>
-                <Button fx:id="exitButton" mnemonicParsing="false" prefHeight="75.0" prefWidth="450.0" text="Quit">
+                <Button fx:id="exitButton" onAction="#handleExit" mnemonicParsing="false" prefHeight="75.0" prefWidth="450.0" text="Quit">
                     <VBox.margin>
                         <Insets top="10.0" />
                     </VBox.margin>
