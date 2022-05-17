@@ -11,7 +11,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class MySudokuApp extends Application {
@@ -36,6 +35,7 @@ public class MySudokuApp extends Application {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getClassLoader().getResource("views/titleScreen.fxml"));
             Parent root = loader.load();
+            this.root = root;
             TitleScreenController titleScreenController = loader.getController();
             Scene scene = new Scene(root);
             titleScreenController.setStartScene(scene);
@@ -48,7 +48,13 @@ public class MySudokuApp extends Application {
         }
     }
     
+    public Stage getPrimaryStage() {
+    	return this.primaryStage;
+    }
     
+    public Parent getRoot() {
+		return this.root;
+	}
     
     public void invocateSudoku() {
     	/**
@@ -74,6 +80,8 @@ public class MySudokuApp extends Application {
     public static void main(String[] args) {
     	Application.launch(args);
     }
+
+	
 
 
 
