@@ -39,4 +39,13 @@ public enum Level {
     public Iteration getIterationType() {
         return iterationType;
     }
+
+//    public Level hasNext() {
+//        Level[] difficulty = values()[(ordinal() + 1) % values().length];
+//        return difficulty;
+//    }
+    public Level hasNext() {
+        return values()[(ordinal() + 1) % values().length];
+    }
+
 }

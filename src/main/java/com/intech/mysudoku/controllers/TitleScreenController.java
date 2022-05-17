@@ -1,14 +1,11 @@
 package com.intech.mysudoku.controllers;
 
-import com.intech.mysudoku.tools.Creator;
-import com.intech.mysudoku.tools.Iteration;
 import com.intech.mysudoku.tools.Level;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -24,8 +21,7 @@ import java.util.ResourceBundle;
 public class TitleScreenController implements Initializable {
     Scene startScene;
     Stage stage;
-
-    Level difficulty = Level.BEGINNER;
+    static Level difficulty = Level.BEGINNER;
 
     @FXML
     AnchorPane anchorPane;
@@ -42,7 +38,7 @@ public class TitleScreenController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        difficultyButton.setText("Difficulty : \n" + difficulty);
     }
 
     public void setStartScene (Scene scene) {
@@ -50,7 +46,6 @@ public class TitleScreenController implements Initializable {
     }
 
     public void handleNewGame(ActionEvent event) throws IOException {
-        System.out.println("new game clicked ...");
         this.stage = (Stage) anchorPane.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("views/gameScreen.fxml"));
         Parent root = loader.load();
@@ -62,7 +57,6 @@ public class TitleScreenController implements Initializable {
     }
 
     public void handleShowSettings(ActionEvent event) throws IOException {
-        System.out.println("settings have been clicked ...");
         this.stage = (Stage) anchorPane.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("views/settingsScreen.fxml"));
         Parent root = loader.load();
@@ -73,9 +67,24 @@ public class TitleScreenController implements Initializable {
         stage.show();
     }
 
+    public static Level getDifficulty() {
+        return difficulty;
+    }
+
+    public static void setNext() {
+        difficulty = difficulty.hasNext();
+    }
+
+    public void handleSetDifficulty(ActionEvent event) {
+        setNext();
+        String text = "Difficulty : \n" + difficulty;
+        difficultyButton.setText(text);
+    }
+
     public void handleExit(ActionEvent event) {
-        System.out.println("Quit button has been clicked ...");
         Platform.exit();
     }
+
+
 
 }

@@ -36,7 +36,7 @@ public class MySudokuApp extends Application {
 		sudoku.fillValues();
 		sudoku.printSudoku(); // Show in console 
 		*/
-		
+
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("views/titleScreen.fxml"));
             Parent root = loader.load();
