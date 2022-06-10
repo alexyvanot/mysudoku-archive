@@ -1,10 +1,11 @@
 package com.intech.mysudoku.controllers;
 
+import com.intech.mysudoku.tools.Level;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -16,10 +17,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class TitleScreenController implements Initializable {
 
-    private Scene startScene;
+public class TitleScreenController implements Initializable {
+    Scene startScene;
     Stage stage;
+    static Level difficulty = Level.BEGINNER;
 
     @FXML
     AnchorPane anchorPane;
@@ -34,17 +36,15 @@ public class TitleScreenController implements Initializable {
     @FXML
     Button exitButton;
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        difficultyButton.setText("Difficulty : \n" + difficulty);
+    }
+
     public void setStartScene (Scene scene) {
         this.startScene = scene;
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-    }
-
-
-    @FXML
     public void handleNewGame(ActionEvent event) throws IOException {
         this.stage = (Stage) anchorPane.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("views/gameScreen.fxml"));
@@ -56,8 +56,7 @@ public class TitleScreenController implements Initializable {
         stage.show();
     }
 
-    @FXML
-    public void showSettings(ActionEvent event) throws IOException {
+    public void handleShowSettings(ActionEvent event) throws IOException {
         this.stage = (Stage) anchorPane.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("views/settingsScreen.fxml"));
         Parent root = loader.load();
@@ -67,5 +66,25 @@ public class TitleScreenController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
+    public static Level getDifficulty() {
+        return difficulty;
+    }
+
+    public static void setNext() {
+        difficulty = difficulty.hasNext();
+    }
+
+    public void handleSetDifficulty(ActionEvent event) {
+        setNext();
+        String text = "Difficulty : \n" + difficulty;
+        difficultyButton.setText(text);
+    }
+
+    public void handleExit(ActionEvent event) {
+        Platform.exit();
+    }
+
+
 
 }

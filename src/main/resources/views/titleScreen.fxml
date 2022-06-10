@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane"  maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.intech.mysudoku.controllers.TitleScreenController">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.intech.mysudoku.controllers.TitleScreenController">
     <children>
         <VBox layoutX="175.0" layoutY="25.0" prefHeight="550.0" prefWidth="450.0">
             <children>
@@ -17,7 +17,7 @@
                         <Font size="50.0" />
                     </font>
                 </Label>
-                <Button fx:id="newGameButton" onAction="#handleNewGame" mnemonicParsing="false" prefHeight="140.0" prefWidth="450.0" text="New Game">
+                <Button fx:id="newGameButton" mnemonicParsing="false" onAction="#handleNewGame" prefHeight="140.0" prefWidth="450.0" text="New Game">
                     <VBox.margin>
                         <Insets top="25.0" />
                     </VBox.margin>
@@ -27,7 +27,7 @@
                 </Button>
                 <HBox prefHeight="140.0" prefWidth="450.0">
                     <children>
-                        <Button fx:id="settingsButton" onAction="#showSettings" mnemonicParsing="false" prefHeight="140.0" prefWidth="220.0" text="Settings">
+                        <Button fx:id="settingsButton" mnemonicParsing="false" onAction="#handleShowSettings" prefHeight="140.0" prefWidth="220.0" text="Settings">
                             <HBox.margin>
                                 <Insets right="10.0" />
                             </HBox.margin>
@@ -35,7 +35,7 @@
                                 <Font size="30.0" />
                             </font>
                         </Button>
-                        <Button fx:id="difficultyButton" mnemonicParsing="false" prefHeight="140.0" prefWidth="220.0" text="Difficulty :">
+                        <Button fx:id="difficultyButton" mnemonicParsing="false" onAction="#handleSetDifficulty" prefHeight="140.0" prefWidth="220.0" text="Difficulty :" textAlignment="CENTER">
                             <font>
                                 <Font size="30.0" />
                             </font>
@@ -45,7 +45,7 @@
                         <Insets top="10.0" />
                     </padding>
                 </HBox>
-                <Button fx:id="exitButton" mnemonicParsing="false" prefHeight="75.0" prefWidth="450.0" text="Quit">
+                <Button fx:id="exitButton" mnemonicParsing="false" onAction="#handleExit" prefHeight="75.0" prefWidth="450.0" text="Quit">
                     <VBox.margin>
                         <Insets top="10.0" />
                     </VBox.margin>

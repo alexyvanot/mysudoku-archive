@@ -14,11 +14,6 @@ import javafx.stage.Stage;
 
 public class MySudokuApp extends Application {
 
-	@Override
-	public void init() throws Exception {
-		super.init();
-	}
-	
     @Override
     public void start(Stage primaryStage) throws Exception {
     	
@@ -30,8 +25,8 @@ public class MySudokuApp extends Application {
 		sudoku.create(Level.EASY);
 		Board sudokuBoard = sudoku.getBoard();
 		System.out.println(sudokuBoard);
-		Solver solveThisSukodu = new Solver();
-		solveThisSukodu.setBoard(sudokuBoard).solve(sudokuBoard.getCells(), 1);
+		Solver solveThisSudoku = new Solver();
+		solveThisSudoku.setBoard(sudokuBoard).solve(sudokuBoard.getCells(), 1);
 		System.out.println();
 		System.out.println(sudokuBoard);
     	
@@ -41,7 +36,7 @@ public class MySudokuApp extends Application {
 		sudoku.fillValues();
 		sudoku.printSudoku(); // Show in console 
 		*/
-		
+
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("views/titleScreen.fxml"));
             Parent root = loader.load();
@@ -53,15 +48,6 @@ public class MySudokuApp extends Application {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-    
-    @Override
-    public void stop() throws Exception {
-    	super.stop();
-    }
-    
-    public static void main(String[] args) {
-    	Application.launch(args);
     }
 
 

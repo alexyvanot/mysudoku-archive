@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eea2fdd6-9804-4e8d-9912-abd8c90a911a" name="Changes" comment="" />
+    <list default="true" id="eea2fdd6-9804-4e8d-9912-abd8c90a911a" name="Changes" comment="v2 front end">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/intech/mysudoku/application/MySudokuApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/intech/mysudoku/application/MySudokuApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/intech/mysudoku/controllers/TitleScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/intech/mysudoku/controllers/TitleScreenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/intech/mysudoku/tools/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/intech/mysudoku/tools/Level.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/views/titleScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/titleScreen.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,6 +24,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="features/alexy" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -34,12 +45,75 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/33650/OneDrive/Documents/INTECH/S3-2/PI/Sudoku",
+    "last_opened_file_path": "C:/Users/33650/OneDrive/Documents/INTECH/S3/Java/jardinvirtuel",
+    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "SDKs",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\33650\OneDrive\Documents\INTECH\S3-2\PI\mysudoku\src\main\resources\views" />
+      <recent name="C:\Users\33650\OneDrive\Documents\INTECH\S3-2\PI\mysudoku\src\main\resources\com\intech\mysudoku" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Maven.MySudoku [javafx:run]">
+    <configuration name="MySudoku [javafx:run]" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="javafx:run" />
+              </list>
+            </option>
+            <option name="pomFileName" value="pom.xml" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <configuration name="mysudoku [javafx:run]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="javafx:run" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Maven.MySudoku [javafx:run]" />
+      <item itemvalue="Maven.mysudoku [javafx:run]" />
+    </list>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -48,8 +122,23 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1652702161947</updated>
-      <workItem from="1652702164834" duration="3853000" />
+      <workItem from="1652702164834" duration="21211000" />
     </task>
+    <task id="LOCAL-00001" summary="v2 front end">
+      <created>1652773037744</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1652773037744</updated>
+    </task>
+    <task id="LOCAL-00002" summary="v2 front end">
+      <created>1652773055312</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1652773055312</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -65,5 +154,19 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="v2 front end" />
+    <option name="LAST_COMMIT_MESSAGE" value="v2 front end" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.RuntimeException" package="java.lang" />
+          <option name="timeStamp" value="3" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
