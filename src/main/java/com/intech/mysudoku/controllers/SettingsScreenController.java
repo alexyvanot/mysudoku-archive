@@ -1,6 +1,8 @@
 package com.intech.mysudoku.controllers;
 
 import javafx.event.ActionEvent;
+import java.awt.Label;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -8,23 +10,16 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-
 import java.io.IOException;
 import java.net.URL;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 
 public class SettingsScreenController implements Initializable {
-
     private Scene scene;
     TitleScreenController titleScreenController;
     Stage stage;
@@ -47,8 +42,6 @@ public class SettingsScreenController implements Initializable {
     Label languageLabel;
     @FXML
     Label selectedLanguageLabel;
-    @FXML
-    ChoiceBox<Image> languageChoiceBox;
     @FXML
     Label guiLabel;
     @FXML
