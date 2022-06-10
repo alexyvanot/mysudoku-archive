@@ -12,16 +12,17 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lombok.Getter;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-
+@Getter
 public class TitleScreenController implements Initializable {
     Scene startScene;
     Stage stage;
-    static Level difficulty = Level.BEGINNER;
+    Level difficulty = Level.BEGINNER;
 
     @FXML
     AnchorPane anchorPane;
@@ -67,18 +68,19 @@ public class TitleScreenController implements Initializable {
         stage.show();
     }
 
-    public static Level getDifficulty() {
-        return difficulty;
-    }
-
-    public static void setNext() {
+    public void setNext() {
         difficulty = difficulty.hasNext();
     }
 
     public void handleSetDifficulty(ActionEvent event) {
         setNext();
+        System.out.println(difficulty);
         String text = "Difficulty : \n" + difficulty;
         difficultyButton.setText(text);
+    }
+
+    public Level getDifficulty() {
+        return difficulty;
     }
 
     public void handleExit(ActionEvent event) {
