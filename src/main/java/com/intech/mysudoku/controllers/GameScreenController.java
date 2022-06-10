@@ -55,6 +55,7 @@ public class GameScreenController implements Initializable {
         Parent root = loader.load();
         Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("main.css").toExternalForm());
         stage1.setScene(scene);
         stage1.show();
     }
