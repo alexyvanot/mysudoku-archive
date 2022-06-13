@@ -1,0 +1,42 @@
+/*style css for titlescreen*/
+
+#anchorPane{
+	-fx-background-color: linear-gradient(to bottom, #212121, #636363);
+	
+}
+
+#settingsButton{
+	-fx-background-color: linear-gradient(to right, #9c4c64, #b17b55);
+	
+}
+#titleLabel{
+    -fx-text-fill: #f8f8f8;
+}
+#soundsLabel{
+    -fx-text-fill: #f8f8f8;
+}
+#languageLabel{
+    -fx-text-fill: #f8f8f8;
+}
+
+#guiLabel{
+    -fx-text-fill: #f8f8f8;
+}
+
+#musicLabel{
+    -fx-text-fill: #f8f8f8;
+}
+
+#volumeLabel{
+    -fx-text-fill: #f8f8f8;
+}
+
+
+#selectedLanguageLabel{
+    -fx-text-fill: #f8f8f8;
+}
+
+
+#colorAssistanceLabel{
+    -fx-text-fill: #f8f8f8;
+}

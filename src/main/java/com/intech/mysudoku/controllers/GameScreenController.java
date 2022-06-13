@@ -15,7 +15,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -28,6 +27,7 @@ public class GameScreenController implements Initializable {
     Scene scene;
     TitleScreenController titleScreenController;
     Stage stage;
+
     Level difficulty;
     Creator creator;
     Board board;
@@ -53,8 +53,9 @@ public class GameScreenController implements Initializable {
         board = creator.create(difficulty);
         for (Cell cell : board.getCells()) {
             String txt = String.valueOf(cell.getValue());
+            System.out.println("cell : " + txt);
             grid.add(
-                    txt.equals("0") ? new Text() : new Label(txt),
+                    txt.equals("0") ? new Label(" ") : new Label(txt),
                     cell.getColumn(),
                     cell.getRow()
             );

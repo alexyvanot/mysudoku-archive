@@ -20,7 +20,6 @@
 
 #anchorPane{
     -fx-background-color: linear-gradient(to bottom, #242424, #666666);
-
 }
 
 #exitButton{
@@ -33,9 +32,38 @@
     -fx-text-fill: #ffffff;
     -fx-font-weight: bold;
     -fx-font-size: 75;
-
 }
 
 .button {
     -fx-background-radius: 4%;
+	-fx-background-color: linear-gradient(to right, #8875df, #96ace6);
+	-fx-font-weight: bold;
+	-fx-font-size: 40px;
+}
+
+#settingsButton{
+	-fx-background-color: linear-gradient(to right, #9c4c64, #b17b55);
+	-fx-font-weight: bold;
+	-fx-font-size: 30px;
+}
+#difficultyButton{
+	-fx-background-color: linear-gradient(to right, #cead2d, #73b833);
+	-fx-font-weight: bold;
+	-fx-font-size: 30px;
+}
+
+#anchorPane{
+		 -fx-background-color: linear-gradient(to bottom, #242424, #666666);
+}
+
+#exitButton{
+		-fx-background-color: linear-gradient(to right, #df1737, #6a1fb8);
+		-fx-font-weight: bold;
+		-fx-font-size: 30px;
+}
+
+#titleLabel{
+        -fx-text-fill: #ffffff;
+        -fx-font-weight: bold;
+        -fx-font-size: 75;
 }

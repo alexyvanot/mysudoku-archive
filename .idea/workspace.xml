@@ -4,12 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eea2fdd6-9804-4e8d-9912-abd8c90a911a" name="Changes" comment="v2 front end">
+    <list default="true" id="eea2fdd6-9804-4e8d-9912-abd8c90a911a" name="Changes" comment="change difficulty button working one">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/icon_final.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/views/setting.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/intech/mysudoku/application/MySudokuApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/intech/mysudoku/application/MySudokuApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/intech/mysudoku/controllers/GameScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/intech/mysudoku/controllers/GameScreenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/intech/mysudoku/controllers/SettingsScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/intech/mysudoku/controllers/SettingsScreenController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/intech/mysudoku/controllers/TitleScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/intech/mysudoku/controllers/TitleScreenController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/intech/mysudoku/tools/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/intech/mysudoku/tools/Level.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/views/titleScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/titleScreen.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/views/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/views/settingsScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/settingsScreen.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,8 +34,18 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/intech/mysudoku/controllers/GameScreenController.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
   </component>
   <component name="ProjectId" id="29FHxV83Jb2nbISODM32KfxDSWF" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -40,18 +53,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/33650/OneDrive/Documents/INTECH/S3/Java/jardinvirtuel",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/33650/OneDrive/Documents/INTECH/S3/Java/jardinvirtuel&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\33650\OneDrive\Documents\INTECH\S3-2\PI\mysudoku\src\main\resources\views" />
@@ -122,7 +135,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1652702161947</updated>
-      <workItem from="1652702164834" duration="21211000" />
+      <workItem from="1652702164834" duration="21689000" />
+      <workItem from="1652792256648" duration="735000" />
+      <workItem from="1653481885557" duration="3274000" />
+      <workItem from="1654694702841" duration="308000" />
+      <workItem from="1654765405355" duration="3360000" />
+      <workItem from="1654848992753" duration="4047000" />
+      <workItem from="1654853593533" duration="9301000" />
+      <workItem from="1655036613663" duration="54000" />
+      <workItem from="1655125394989" duration="82000" />
+      <workItem from="1655125486434" duration="1175000" />
     </task>
     <task id="LOCAL-00001" summary="v2 front end">
       <created>1652773037744</created>
@@ -138,7 +160,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652773055312</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="change difficulty button working one">
+      <created>1652786596817</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1652786596817</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -157,7 +186,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="v2 front end" />
-    <option name="LAST_COMMIT_MESSAGE" value="v2 front end" />
+    <MESSAGE value="change difficulty button working one" />
+    <option name="LAST_COMMIT_MESSAGE" value="change difficulty button working one" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
