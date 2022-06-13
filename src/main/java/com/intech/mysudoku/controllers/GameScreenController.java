@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -47,7 +48,7 @@ public class GameScreenController implements Initializable {
 
     public void setTitleScreenController (TitleScreenController titleScreenController) {
         this.titleScreenController = titleScreenController;
-    }
+    } 
 
     public void handleShowMainMenu(ActionEvent event) throws IOException {
         this.stage = (Stage) anchorPane.getScene().getWindow();
@@ -55,6 +56,10 @@ public class GameScreenController implements Initializable {
         Parent root = loader.load();
         Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
+        URL url = ClassLoader.getSystemClassLoader().getResource("Images/icon_final.jpeg");
+        Image icon = new Image(url.openStream());
+        stage.getIcons().add(icon);
+        stage.setTitle("MySudoku");
         scene.getStylesheets().add(getClass().getResource("main.css").toExternalForm());
         stage1.setScene(scene);
         stage1.show();

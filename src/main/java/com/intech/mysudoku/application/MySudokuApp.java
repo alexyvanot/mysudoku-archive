@@ -42,7 +42,6 @@ public class MySudokuApp extends Application {
             Parent root = loader.load();
             TitleScreenController titleScreenController = loader.getController();
             Scene scene = new Scene(root);
-            scene.getStylesheets().add(getClass().getResource("main.css").toExternalForm());
             titleScreenController.setStartScene(scene);
             primaryStage.setScene(scene);
             primaryStage.show();

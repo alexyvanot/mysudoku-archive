@@ -1,21 +1,22 @@
 /*style css for titlescreen*/
 
 #newGameButton{
-	-fx-background-color: linear-gradient(to right, #8875df, #96ace6);	
+	-fx-background-color: linear-gradient(to right, #8875df, #96ace6);
 	-fx-font-weight: bold;
 	-fx-font-size: 40px;
 }
 
 #settingsButton{
 	-fx-background-color: linear-gradient(to right, #9c4c64, #b17b55);
-	-fx-font-size: 30px;
 	-fx-font-weight: bold;
+	-fx-font-size: 30px;
+	
 }
-
 #difficultyButton{
 	-fx-background-color: linear-gradient(to right, #cead2d, #73b833);
-	-fx-font-size: 30px;
 	-fx-font-weight: bold;
+	-fx-font-size: 30px;
+	
 }
 
 #anchorPane{
@@ -25,8 +26,9 @@
 
 #exitButton{
 		-fx-background-color: linear-gradient(to right, #df1737, #6a1fb8);
-		-fx-font-size: 30px;
 		-fx-font-weight: bold;
+		-fx-font-size: 30px;
+	
 }
 
 #titleLabel{
@@ -34,8 +36,4 @@
         -fx-font-weight: bold;
         -fx-font-size: 75;
 	
-}
-
-.button {
-		-fx-background-radius: 4%;
 }
