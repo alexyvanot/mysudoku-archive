@@ -1,9 +1,14 @@
 package com.intech.mysudoku.controllers;
 
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import com.intech.mysudoku.tools.Board;
 import com.intech.mysudoku.tools.Cell;
 import com.intech.mysudoku.tools.Creator;
 import com.intech.mysudoku.tools.Level;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,14 +18,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 
 public class GameScreenController implements Initializable {
@@ -52,9 +53,9 @@ public class GameScreenController implements Initializable {
         System.out.println("difficulty : " + difficulty);
         board = creator.create(difficulty);
         for (Cell cell : board.getCells()) {
-            String txt = String.valueOf(cell.getValue());
+            String txt = cell.getValue().toString();
             grid.add(
-                    txt.equals("0") ? new Text() : new Label(txt),
+                    txt.equals("0") ? new TextField() : new Label(txt),
                     cell.getColumn(),
                     cell.getRow()
             );

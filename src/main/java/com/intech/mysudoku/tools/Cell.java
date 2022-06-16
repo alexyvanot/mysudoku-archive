@@ -7,7 +7,7 @@ public class Cell {
     final private int row;
     final private int column;
     final private int block;
-    private int value;
+    private Integer value = 0;
     private int save;
     private int solution;
 
@@ -35,14 +35,14 @@ public class Cell {
      *
      * @param value which the given cell will hold.
      */
-    public void setValue(int value) {
+    public void setValue(Integer value) {
         this.value = value;
     }
 
     /**
      * @return Value currently held by the given Cell object.
      */
-    public int getValue() {
+    public Integer getValue() {
         return  value;
     }
 
