@@ -54,7 +54,7 @@ public class SettingsScreenController implements Initializable {
     CheckBox colorAssistanceCheckBox;
     
     // TODO
-    MusicController mc = new MusicController();
+//    MusicController mc = new MusicController();
 
     public void setTitleScreenController (TitleScreenController titleScreenController) {
         this.titleScreenController = titleScreenController;

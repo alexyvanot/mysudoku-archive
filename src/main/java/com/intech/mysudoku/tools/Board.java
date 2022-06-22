@@ -30,6 +30,13 @@ public class Board implements Iterable<Cell>, Cloneable {
         return cells;
     }
 
+    public Cell getCell(int x, int y){
+        if(x >= 0 && x <= 8 && y >= 0 && y <= 8){
+            return grid[x][y];
+        }
+        return null;
+    }
+
     /**
      * @return List of Lists of Cells, which are grouping Cells by it position within board blocks.
      */

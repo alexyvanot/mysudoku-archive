@@ -3,24 +3,30 @@ package com.intech.mysudoku.controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.function.UnaryOperator;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-import com.intech.mysudoku.tools.Board;
-import com.intech.mysudoku.tools.Cell;
-import com.intech.mysudoku.tools.Creator;
-import com.intech.mysudoku.tools.Level;
+import com.intech.mysudoku.model.javafx.IntField;
+import com.intech.mysudoku.tools.*;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 
@@ -54,8 +60,21 @@ public class GameScreenController implements Initializable {
         board = creator.create(difficulty);
         for (Cell cell : board.getCells()) {
             String txt = cell.getValue().toString();
+            //TextField t = new TextField();
+            IntField t = new IntField(cell.getValue(), 0, 9);
+            Font font = new Font("SansSerif", 25);
+            t.setFont(font);
+            t.setAlignment(Pos.CENTER);
+            if(txt.equals("0")) {
+                t.setEditable(true);
+                t.setText("");
+            } else {
+                t.setEditable(false);
+            }
+            t.setPrefWidth(70);
+            t.setPrefHeight(70);
             grid.add(
-                    txt.equals("0") ? new TextField() : new Label(txt),
+                    t,
                     cell.getColumn(),
                     cell.getRow()
             );
