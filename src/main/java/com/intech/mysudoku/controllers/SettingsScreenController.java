@@ -79,13 +79,9 @@ public class SettingsScreenController implements Initializable {
         this.stage = (Stage) anchorPane.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("views/titleScreen.fxml"));
         Parent root = loader.load();
-        Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
-        URL url = ClassLoader.getSystemClassLoader().getResource("Images/icon_final.jpeg");
-        Image icon = new Image(url.openStream());
-        stage.getIcons().add(icon);
-        stage.setTitle("MySudoku");
-        stage1.setScene(scene);
-        stage1.show();
+        stage.setScene(scene);
+        stage.show();
     }
 }

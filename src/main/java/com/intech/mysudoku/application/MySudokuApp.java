@@ -10,7 +10,10 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
+
+import java.net.URL;
 
 public class MySudokuApp extends Application {
 
@@ -43,6 +46,10 @@ public class MySudokuApp extends Application {
             TitleScreenController titleScreenController = loader.getController();
             Scene scene = new Scene(root);
             titleScreenController.setStartScene(scene);
+            URL url = ClassLoader.getSystemClassLoader().getResource("Images/icon_final.jpeg");
+            Image icon = new Image(url.openStream());
+            primaryStage.getIcons().add(icon);
+            primaryStage.setTitle("MySudoku");
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (Exception e) {
