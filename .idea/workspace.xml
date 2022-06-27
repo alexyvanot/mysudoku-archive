@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eea2fdd6-9804-4e8d-9912-abd8c90a911a" name="Changes" comment="change difficulty button working one">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/intech/mysudoku/tools/CellTextField.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/intech/mysudoku/controllers/GameScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/intech/mysudoku/controllers/GameScreenController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/intech/mysudoku/controllers/SettingsScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/intech/mysudoku/controllers/SettingsScreenController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/intech/mysudoku/tools/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/intech/mysudoku/tools/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/intech/mysudoku/model/javafx/IntField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/intech/mysudoku/model/javafx/IntField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/intech/mysudoku/tools/Creator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/intech/mysudoku/tools/Creator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/views/gameScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/gameScreen.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,7 +148,8 @@
       <workItem from="1655293843565" duration="740000" />
       <workItem from="1655294607462" duration="2305000" />
       <workItem from="1655898973449" duration="3798000" />
-      <workItem from="1655903641128" duration="4329000" />
+      <workItem from="1655903641128" duration="4378000" />
+      <workItem from="1655989968253" duration="4203000" />
     </task>
     <task id="LOCAL-00001" summary="v2 front end">
       <created>1652773037744</created>
