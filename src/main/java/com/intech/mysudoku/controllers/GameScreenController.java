@@ -3,15 +3,10 @@ package com.intech.mysudoku.controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.function.UnaryOperator;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
+import com.intech.mysudoku.model.javafx.BoardPane;
 import com.intech.mysudoku.model.javafx.IntField;
 import com.intech.mysudoku.tools.*;
-
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,10 +18,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+<<<<<<< HEAD
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+=======
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+>>>>>>> 3661905b31a29e6990c224e15d0a1609c32d1963
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
@@ -45,7 +45,7 @@ public class GameScreenController implements Initializable {
     @FXML
     AnchorPane anchorPane;
     @FXML
-    GridPane grid;
+    BoardPane grid;
     @FXML
     Label titleLabel;
     @FXML
@@ -64,14 +64,19 @@ public class GameScreenController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         creator = new Creator();
-        difficulty = titleScreenController.getDifficulty();
+        difficulty = TitleScreenController.getDifficulty();
         System.out.println("difficulty : " + difficulty);
         board = creator.create(difficulty);
+<<<<<<< HEAD
 
         for (Cell cell : board.getCells()) {
+=======
+        grid.setBoard(board);
+        for (Cell cell : grid.getBoard().getCells()) {
+>>>>>>> 3661905b31a29e6990c224e15d0a1609c32d1963
             String txt = cell.getValue().toString();
             //TextField t = new TextField();
-            IntField t = new IntField(cell.getValue(), 0, 9);
+            IntField t = new IntField(cell.getValue(), 0, 9, cell, grid);
             Font font = new Font("SansSerif", 25);
             t.setFont(font);
             t.setAlignment(Pos.CENTER);

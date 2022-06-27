@@ -1,5 +1,7 @@
 package com.intech.mysudoku.model.javafx;
 
+import com.intech.mysudoku.tools.Board;
+import com.intech.mysudoku.tools.Cell;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.value.ChangeListener;
@@ -10,16 +12,25 @@ import javafx.scene.input.KeyEvent;
 
 public class IntField extends TextField {
 
+    BoardPane boardPane;
+
     final private IntegerProperty value;
     final private int minValue;
     final private int maxValue;
+    private Cell cell;
 
+    public BoardPane getBoardPane() {
+        return boardPane;
+    }
+    public void setBoardPane(BoardPane boardPane) {
+        this.boardPane = boardPane;
+    }
     public int  getValue()                 { return value.getValue(); }
     public void setValue(int newValue)     { value.setValue(newValue); }
     public IntegerProperty valueProperty() { return value; }
 
 
-    public IntField(int initialValue, int minValue, int maxValue) {
+    public IntField(int initialValue, int minValue, int maxValue, Cell cell, BoardPane pane) {
 
         if (minValue > maxValue)
             throw new IllegalArgumentException(
@@ -34,6 +45,8 @@ public class IntField extends TextField {
         this.minValue = minValue;
         this.maxValue = maxValue;
         value = new SimpleIntegerProperty(initialValue);
+        this.cell = cell;
+        this.boardPane = pane;
         setText(initialValue + "");
 
         final IntField intField = this;
@@ -75,8 +88,12 @@ public class IntField extends TextField {
                 else {
                     if (!"123456789".contains(keyEvent.getCharacter())) {
                         keyEvent.consume();
+                    } else {
+                        cell.setValue(Integer.parseInt(keyEvent.getCharacter()));
+
                     }
                 }
+                System.out.println("Cell value: " + cell.getValue());
             }
         });
 
@@ -92,9 +109,11 @@ public class IntField extends TextField {
 
                 if (intField.minValue > intValue || intValue > intField.maxValue) {
                     textProperty().setValue(oldValue);
+                    //cell.setValue(Integer.parseInt(oldValue));
                 }
 
                 value.set(Integer.parseInt(textProperty().get()));
+                //cell.setValue(Integer.parseInt(textProperty().get()));
             }
         });
     }
