@@ -18,7 +18,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
@@ -49,7 +48,6 @@ public class GameScreenController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         creator = new Creator();
         difficulty = TitleScreenController.getDifficulty();
-        System.out.println("difficulty : " + difficulty);
         board = creator.create(difficulty);
         grid.setBoard(board);
         for (Cell cell : grid.getBoard().getCells()) {
@@ -59,6 +57,7 @@ public class GameScreenController implements Initializable {
             Font font = new Font("SansSerif", 25);
             t.setFont(font);
             t.setAlignment(Pos.CENTER);
+            t.setStyle("-fx-background-color: black, -fx-control-inner-background; -fx-background-insets: 0, 2; -fx-padding: 2;");
             if(txt.equals("0")) {
                 t.setEditable(true);
                 t.setText("");
