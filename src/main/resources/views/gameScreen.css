@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 /* css for the game Screen */
+=======
+/*css for the game Screen
+
+
+ */
+>>>>>>> 449879b547fc1256ada7dc425888e0dd11e241a3
 
 #grid {
     -fx-background-color: #26C4EC;
@@ -11,4 +18,8 @@
     -fx-font-size: 25 px;
     -fx-font-weight: bold;
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 449879b547fc1256ada7dc425888e0dd11e241a3

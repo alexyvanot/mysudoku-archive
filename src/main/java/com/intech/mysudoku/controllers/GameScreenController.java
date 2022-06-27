@@ -11,15 +11,29 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+<<<<<<< HEAD
+import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+=======
 import javafx.scene.layout.AnchorPane;
+<<<<<<< HEAD
+=======
+import javafx.scene.layout.GridPane;
+>>>>>>> 3661905b31a29e6990c224e15d0a1609c32d1963
+>>>>>>> 449879b547fc1256ada7dc425888e0dd11e241a3
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+
+import javax.swing.text.html.ImageView;
 
 
 public class GameScreenController implements Initializable {
@@ -43,14 +57,25 @@ public class GameScreenController implements Initializable {
     Label chronoLabel;
     @FXML
     Button exitGameButton;
+    @FXML
+    StackPane st1;
+    @FXML
+    ImageView img1;
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         creator = new Creator();
         difficulty = TitleScreenController.getDifficulty();
         board = creator.create(difficulty);
+<<<<<<< HEAD
+
+        for (Cell cell : board.getCells()) {
+=======
         grid.setBoard(board);
         for (Cell cell : grid.getBoard().getCells()) {
+>>>>>>> 3661905b31a29e6990c224e15d0a1609c32d1963
             String txt = cell.getValue().toString();
             //TextField t = new TextField();
             IntField t = new IntField(cell.getValue(), 0, 9, cell, grid);
@@ -58,9 +83,14 @@ public class GameScreenController implements Initializable {
             t.setFont(font);
             t.setAlignment(Pos.CENTER);
             t.setStyle("-fx-background-color: black, -fx-control-inner-background; -fx-background-insets: 0, 2; -fx-padding: 2;");
+<<<<<<< HEAD
+=======
+
+>>>>>>> 449879b547fc1256ada7dc425888e0dd11e241a3
             if(txt.equals("0")) {
                 t.setEditable(true);
                 t.setText("");
+
             } else {
                 t.setEditable(false);
             }
@@ -71,9 +101,11 @@ public class GameScreenController implements Initializable {
                     cell.getColumn(),
                     cell.getRow()
             );
+
         }
 
     }
+
 
     public void setTitleScreenController (TitleScreenController titleScreenController) {
         this.titleScreenController = titleScreenController;
