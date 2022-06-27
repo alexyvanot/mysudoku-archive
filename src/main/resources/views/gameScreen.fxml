@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 
 <?import com.intech.mysudoku.model.javafx.BoardPane?>
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.intech.mysudoku.controllers.GameScreenController">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.intech.mysudoku.controllers.GameScreenController" stylesheets="@gameScreen.css">
    <children>
       <BoardPane fx:id="grid" gridLinesVisible="true" layoutX="40.0" layoutY="38.0" prefHeight="630.0" prefWidth="630.0">
         <columnConstraints>

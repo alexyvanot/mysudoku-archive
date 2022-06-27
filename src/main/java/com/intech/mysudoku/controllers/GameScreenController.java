@@ -59,6 +59,7 @@ public class GameScreenController implements Initializable {
             Font font = new Font("SansSerif", 25);
             t.setFont(font);
             t.setAlignment(Pos.CENTER);
+            t.setStyle("-fx-background-color: black, -fx-control-inner-background; -fx-background-insets: 0, 2; -fx-padding: 2;");
             if(txt.equals("0")) {
                 t.setEditable(true);
                 t.setText("");
