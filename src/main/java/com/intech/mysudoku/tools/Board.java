@@ -1,10 +1,6 @@
 package com.intech.mysudoku.tools;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 /**
  * Sudoku game board composed of Cell objects.
@@ -60,6 +56,9 @@ public class Board implements Iterable<Cell>, Cloneable {
                 grid[row][col] = cell;
                 cells.add(cell);
                 blocks.get(cell.getBlock()).add(cell);
+
+
+
             }
         }
     }
