@@ -5,13 +5,25 @@ import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BoardPane extends GridPane {
 
     private static Board board;
-
     private static int cellValueCount = 0;
+    private List<IntField> intFields = new ArrayList<>();
 
 
+    public List<IntField> getIntFields()
+    {
+        return this.intFields;
+    }
+
+    public void setIntFields(List<IntField> intFields)
+    {
+        this.intFields = intFields;
+    }
 
     public int getCellValueCount() {
         return cellValueCount;
@@ -33,17 +45,6 @@ public class BoardPane extends GridPane {
 
     public BoardPane() {
         super();
-
-        this.addEventFilter(KeyEvent.ANY, new EventHandler<KeyEvent>() {
-
-            @Override
-            public void handle(KeyEvent event) {
-
-
-
-            }
-
-        });
     }
 
 }

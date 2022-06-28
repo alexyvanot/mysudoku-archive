@@ -73,6 +73,7 @@ public class GameScreenController implements Initializable {
                     cell.getColumn(),
                     cell.getRow()
             );
+            grid.getIntFields().add(t);
         }
 
     }

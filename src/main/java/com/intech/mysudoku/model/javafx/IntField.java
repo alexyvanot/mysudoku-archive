@@ -51,6 +51,13 @@ public class IntField extends TextField {
 
         final IntField intField = this;
 
+        if (initialValue != 0) {
+
+            boardPane.setCellValueCount(boardPane.getCellValueCount() + 1);
+            System.out.println("boardpane cellValueCount: " + boardPane.getCellValueCount());
+
+        }
+
         // make sure the value property is clamped to the required range
         // and update the field's text to be in sync with the value.
         value.addListener(new ChangeListener<Number>() {
@@ -70,8 +77,12 @@ public class IntField extends TextField {
 
                     if (newValue.intValue() == 0 && (textProperty().get() == null || "".equals(textProperty().get()))) {
                         // no action required, text property is already blank, we don't need to set it to 0.
+                        boardPane.setCellValueCount(boardPane.getCellValueCount() - 1);
+                        System.out.println("boardpane cellValueCount: " + boardPane.getCellValueCount());
                     } else {
                         intField.setText(newValue.toString());
+                        boardPane.setCellValueCount(boardPane.getCellValueCount() + 1);
+                        System.out.println("boardpane cellValueCount: " + boardPane.getCellValueCount());
                     }
                 }
             }

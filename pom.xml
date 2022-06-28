@@ -42,7 +42,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.6</version>
                 <configuration>
-                    <executable>C:\Users\Brimal MARTIN\Documents\jdk\jdk-11.0.15\bin\java.exe</executable>
+<!--                    <executable>C:\Users\Brimal MARTIN\Documents\jdk\jdk-11.0.15\bin\java.exe</executable>-->
                     <mainClass>com.intech.mysudoku.application.MySudokuApp</mainClass>
                 </configuration>
             </plugin>

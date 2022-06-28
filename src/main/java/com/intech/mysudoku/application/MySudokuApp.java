@@ -23,7 +23,7 @@ public class MySudokuApp extends Application {
     	 * Sudoku invocator
     	 */
     	System.out.println("Loading application...");
-    	Creator sudoku = new Creator();
+/*    	Creator sudoku = new Creator();
 
         sudoku.create(Level.EASY);
 		Board sudokuBoard = sudoku.getBoard();
@@ -31,7 +31,7 @@ public class MySudokuApp extends Application {
 		Solver solveThisSudoku = new Solver();
 		solveThisSudoku.setBoard(sudokuBoard).solve(sudokuBoard.getCells(), 1);
 		System.out.println();
-		System.out.println(sudokuBoard);
+		System.out.println(sudokuBoard);*/
 
 
     	
