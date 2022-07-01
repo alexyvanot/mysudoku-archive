@@ -8,6 +8,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 public class IntField extends TextField {
@@ -78,6 +79,7 @@ public class IntField extends TextField {
                     if (newValue.intValue() == 0 && (textProperty().get() == null || "".equals(textProperty().get()))) {
                         // no action required, text property is already blank, we don't need to set it to 0.
                         boardPane.setCellValueCount(boardPane.getCellValueCount() - 1);
+                        cell.setValue(0);
                         System.out.println("boardpane cellValueCount: " + boardPane.getCellValueCount());
                     } else {
                         intField.setText(newValue.toString());
@@ -100,8 +102,16 @@ public class IntField extends TextField {
                     if (!"123456789".contains(keyEvent.getCharacter())) {
                         keyEvent.consume();
                     } else {
-                        cell.setValue(Integer.parseInt(keyEvent.getCharacter()));
-
+                        if (keyEvent.getCode().equals(KeyCode.BACK_SPACE)) {
+                            cell.setValue(0);
+                        } else {
+                            if (cell.getValue() != 0) {
+                                keyEvent.consume();
+                                System.out.println("keyevent consumed");
+                            } else {
+                                cell.setValue(Integer.parseInt(keyEvent.getCharacter()));
+                            }
+                        }
                     }
                 }
                 System.out.println("Cell value: " + cell.getValue());

@@ -20,6 +20,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 
@@ -41,6 +42,8 @@ public class GameScreenController implements Initializable {
     @FXML
     Label difficultyLabel;
     @FXML
+    Text difficultyText;
+    @FXML
     Label chronoLabel;
     @FXML
     Button exitGameButton;
@@ -50,6 +53,7 @@ public class GameScreenController implements Initializable {
         creator = new Creator();
         difficulty = TitleScreenController.getDifficulty();
         System.out.println("difficulty : " + difficulty);
+        difficultyText.setText(difficulty.toString());
         board = creator.create(difficulty);
         grid.setBoard(board);
         for (Cell cell : grid.getBoard().getCells()) {
