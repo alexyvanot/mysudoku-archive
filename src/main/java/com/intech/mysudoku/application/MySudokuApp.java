@@ -52,7 +52,6 @@ public class MySudokuApp extends Application {
             titleScreenController.setStartScene(scene);
             primaryStage.setTitle("MySudoku");
             primaryStage.setScene(scene);
-
             primaryStage.show();
 
 

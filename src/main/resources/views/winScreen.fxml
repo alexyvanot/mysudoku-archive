@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@main.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.intech.mysudoku.controllers.WinScreenController">
+    <children>
+        <VBox layoutX="175.0" layoutY="25.0" prefHeight="550.0" prefWidth="450.0">
+            <children>
+                <Label fx:id="titleLabel" alignment="CENTER" prefHeight="75.0" prefWidth="450.0" text="MySudoku">
+                    <font>
+                        <Font size="50.0" />
+                    </font>
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+                </Label>
+            <Label fx:id="subtitleLabel" alignment="CENTER" maxHeight="150.0" maxWidth="450.0" prefHeight="100.0" prefWidth="450.0" text="You WON !">
+               <font>
+                  <Font size="50.0" />
+               </font>
+            </Label>
+                <HBox alignment="TOP_CENTER" prefHeight="75.0" prefWidth="450.0">
+                    <padding>
+                        <Insets top="10.0" />
+                    </padding>
+               <children>
+                  <Label fx:id="difficultyLabel" alignment="CENTER" text="Difficulty :">
+                     <font>
+                        <Font size="40.0" />
+                     </font>
+                  </Label>
+                  <Text fx:id="difficultyText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                     <font>
+                        <Font size="40.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+                </HBox>
+            <VBox alignment="CENTER" prefHeight="175.0" prefWidth="450.0">
+               <children>
+                  <Label fx:id="chronoLabel" alignment="CENTER" prefHeight="45.0" prefWidth="450.0" text="Time Taken :">
+                     <font>
+                        <Font size="40.0" />
+                     </font>
+                  </Label>
+                  <Text fx:id="chronoText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                     <font>
+                        <Font size="50.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Text>
+               </children>
+            </VBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="replayButton" mnemonicParsing="false" onAction="#handleReplayGame" prefHeight="60.0" prefWidth="175.0" text="Replay">
+                     <HBox.margin>
+                        <Insets right="50.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="exitButton" mnemonicParsing="false" onAction="#handleShowMainMenu" prefHeight="60.0" prefWidth="175.0" text="Quit"/>
+               </children>
+            </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

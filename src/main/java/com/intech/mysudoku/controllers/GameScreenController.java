@@ -18,7 +18,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -32,6 +31,7 @@ public class GameScreenController implements Initializable {
     Level difficulty;
     Creator creator;
     Board board;
+    BoardPane boardPane;
 
     @FXML
     AnchorPane anchorPane;
@@ -45,6 +45,8 @@ public class GameScreenController implements Initializable {
     Text difficultyText;
     @FXML
     Label chronoLabel;
+    @FXML
+    Text chronoText;
     @FXML
     Button exitGameButton;
 
@@ -86,7 +88,9 @@ public class GameScreenController implements Initializable {
         this.titleScreenController = titleScreenController;
     }
 
-    public void handleShowMainMenu(ActionEvent event) throws IOException {
+    public void handleExitGame(ActionEvent event) throws IOException {
+        boardPane = new BoardPane();
+        boardPane.setCellValueCount(0);
         this.stage = (Stage) anchorPane.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("views/titleScreen.fxml"));
         Parent root = loader.load();

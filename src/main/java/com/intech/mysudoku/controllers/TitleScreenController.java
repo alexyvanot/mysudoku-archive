@@ -21,6 +21,7 @@ import java.util.ResourceBundle;
 public class TitleScreenController implements Initializable {
     Scene startScene;
     Stage stage;
+    WinScreenController winScreenController;
     static Level difficulty = Level.BEGINNER;
 
     @FXML
@@ -45,7 +46,7 @@ public class TitleScreenController implements Initializable {
         this.startScene = scene;
     }
 
-    public void handleNewGame(ActionEvent event) throws IOException {
+    public void handleNewGame() throws IOException {
         this.stage = (Stage) anchorPane.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("views/gameScreen.fxml"));
         Parent root = loader.load();
@@ -83,6 +84,10 @@ public class TitleScreenController implements Initializable {
 
     public void handleExit(ActionEvent event) {
         Platform.exit();
+    }
+
+    public void setWinScreenController (WinScreenController winScreenController) {
+        this.winScreenController = winScreenController;
     }
 
 
