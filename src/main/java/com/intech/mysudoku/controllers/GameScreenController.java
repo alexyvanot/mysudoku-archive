@@ -32,6 +32,8 @@ public class GameScreenController implements Initializable {
     Creator creator;
     Board board;
     BoardPane boardPane;
+    Solver solver;
+    boolean clicked = false;
 
     @FXML
     AnchorPane anchorPane;
@@ -49,6 +51,8 @@ public class GameScreenController implements Initializable {
     Text chronoText;
     @FXML
     Button exitGameButton;
+    @FXML
+    Button giveUpButton;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -98,6 +102,32 @@ public class GameScreenController implements Initializable {
         scene = new Scene(root);
         stage1.setScene(scene);
         stage1.show();
+    }
+
+    public void handleResolve() {
+        if (clicked) {
+            return;
+        }
+        clicked = true;
+        solver = new Solver();
+        solver.setBoard(board).solve(board.getCells(), 1);
+        System.out.println(board);
+        for (Cell cell : grid.getBoard().getCells()) {
+            IntField t = new IntField(cell.getValue(), 0, 9, cell, grid);
+            Font font = new Font("SansSerif", 25);
+            t.setFont(font);
+            t.setAlignment(Pos.CENTER);
+            t.setStyle("-fx-background-color: black, -fx-control-inner-background; -fx-background-insets: 0, 2; -fx-padding: 2;");
+            t.setEditable(false);
+            t.setPrefWidth(70);
+            t.setPrefHeight(70);
+            grid.add(
+                    t,
+                    cell.getColumn(),
+                    cell.getRow()
+            );
+            grid.getIntFields().add(t);
+        }
     }
 
 
