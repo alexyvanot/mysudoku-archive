@@ -29,13 +29,6 @@ public class MySudokuApp extends Application {
 		solveThisSudoku.setBoard(sudokuBoard).solve(sudokuBoard.getCells(), 1);
 		System.out.println();
 		System.out.println(sudokuBoard);
-    	
-    	/* "Deprecated"
-    	int N = 9, K = 20;
-		Sudoku sudoku = new Sudoku(N, K);
-		sudoku.fillValues();
-		sudoku.printSudoku(); // Show in console 
-		*/
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("views/titleScreen.fxml"));
