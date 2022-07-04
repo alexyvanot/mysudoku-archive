@@ -52,6 +52,10 @@ public class MySudokuApp extends Application {
             TitleScreenController titleScreenController = loader.getController();
             Scene scene = new Scene(root);
             titleScreenController.setStartScene(scene);
+            URL url = ClassLoader.getSystemClassLoader().getResource("Images/icon_final.jpeg");
+            Image icon = new Image(url.openStream());
+            primaryStage.getIcons().add(icon);
+            primaryStage.setTitle("MySudoku");
             primaryStage.setTitle("MySudoku");
             primaryStage.setScene(scene);
             primaryStage.show();
