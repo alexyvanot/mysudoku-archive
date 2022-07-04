@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@main.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.intech.mysudoku.controllers.WinScreenController">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.intech.mysudoku.controllers.WinScreenController">
     <children>
         <VBox layoutX="175.0" layoutY="25.0" prefHeight="550.0" prefWidth="450.0">
             <children>
@@ -21,7 +21,7 @@
                   <Insets top="20.0" />
                </padding>
                 </Label>
-            <Label fx:id="subtitleLabel" alignment="CENTER" maxHeight="150.0" maxWidth="450.0" prefHeight="100.0" prefWidth="450.0" text="You WON !">
+            <Label fx:id="subtitleLabel" alignment="CENTER" maxHeight="150.0" maxWidth="450.0" prefHeight="100.0" prefWidth="450.0" text="You WON !" textFill="#32ba1a">
                <font>
                   <Font size="50.0" />
                </font>
@@ -31,12 +31,12 @@
                         <Insets top="10.0" />
                     </padding>
                <children>
-                  <Label fx:id="difficultyLabel" alignment="CENTER" text="Difficulty :">
+                  <Label fx:id="difficultyLabel" alignment="CENTER" text="Difficulty :" textFill="#c3c3c3">
                      <font>
                         <Font size="40.0" />
                      </font>
                   </Label>
-                  <Text fx:id="difficultyText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                  <Text fx:id="difficultyText" fill="#8d8d8d" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;difficulty&gt;">
                      <font>
                         <Font size="40.0" />
                      </font>
@@ -48,12 +48,12 @@
                 </HBox>
             <VBox alignment="CENTER" prefHeight="175.0" prefWidth="450.0">
                <children>
-                  <Label fx:id="chronoLabel" alignment="CENTER" prefHeight="45.0" prefWidth="450.0" text="Time Taken :">
+                  <Label fx:id="chronoLabel" alignment="CENTER" prefHeight="45.0" prefWidth="450.0" text="Time Score :" textFill="#c3c3c3">
                      <font>
                         <Font size="40.0" />
                      </font>
                   </Label>
-                  <Text fx:id="chronoText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                  <Text fx:id="chronoText" fill="#3aa9d9" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;timer&gt;">
                      <font>
                         <Font size="50.0" />
                      </font>
@@ -70,7 +70,7 @@
                         <Insets right="50.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="exitButton" mnemonicParsing="false" onAction="#handleShowMainMenu" prefHeight="60.0" prefWidth="175.0" text="Quit"/>
+                  <Button fx:id="exitButton" mnemonicParsing="false" onAction="#handleShowMainMenu" prefHeight="60.0" prefWidth="175.0" text="Quit" />
                </children>
             </HBox>
             </children>
