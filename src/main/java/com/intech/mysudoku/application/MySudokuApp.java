@@ -25,15 +25,16 @@ public class MySudokuApp extends Application {
     	 * Sudoku invocator
     	 */
     	System.out.println("Loading application...");
-/*    	Creator sudoku = new Creator();
-
+    	/*
+    	Creator sudoku = new Creator();
         sudoku.create(Level.EASY);
 		Board sudokuBoard = sudoku.getBoard();
 		System.out.println(sudokuBoard);
 		Solver solveThisSudoku = new Solver();
 		solveThisSudoku.setBoard(sudokuBoard).solve(sudokuBoard.getCells(), 1);
 		System.out.println();
-		System.out.println(sudokuBoard);*/
+		System.out.println(sudokuBoard);
+		*/
 
 
     	
@@ -42,9 +43,8 @@ public class MySudokuApp extends Application {
 		Sudoku sudoku = new Sudoku(N, K);
 		sudoku.fillValues();
 		sudoku.printSudoku(); // Show in console
-
-
 		*/
+
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("views/titleScreen.fxml"));
