@@ -12,6 +12,7 @@
 
 <?import com.intech.mysudoku.model.javafx.BoardPane?>
 
+
 <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" stylesheets="@gameScreen.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.intech.mysudoku.controllers.GameScreenController">
    <children>
       <BoardPane fx:id="grid" gridLinesVisible="true" layoutX="40.0" layoutY="38.0" prefHeight="630.0" prefWidth="630.0">
@@ -38,9 +39,9 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
       </BoardPane>
-      <Label fx:id="titleLabel" layoutX="757.0" layoutY="45.0" text="MySudoku">
+      <Label fx:id="titleLabel" layoutX="744.0" layoutY="45.0" text="My    udoku" textFill="WHITE">
          <font>
-            <Font size="50.0" />
+            <Font name="System Bold" size="50.0" />
          </font>
       </Label>
       <Label fx:id="difficultyLabel" layoutX="721.0" layoutY="167.0" text="Difficulty :" textFill="#f2efef">
@@ -58,7 +59,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <ImageView fitHeight="48.0" fitWidth="53.0" layoutX="828.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="56.0" fitWidth="65.0" layoutX="816.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/iconhd.png" />
          </image>
@@ -68,7 +69,7 @@
             <Font name="Arial Black" size="26.0" />
          </font>
       </Text>
-       <Text fx:id="chronoText" layoutX="855.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="178.0" text="chronotext :">
+       <Text fx:id="chronoText" layoutX="855.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="chronotext :" wrappingWidth="178.0">
            <font>
                <Font name="Arial Black" size="26.0" />
            </font>
