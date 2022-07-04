@@ -7,6 +7,8 @@ import java.util.ResourceBundle;
 import com.intech.mysudoku.model.javafx.BoardPane;
 import com.intech.mysudoku.model.javafx.IntField;
 import com.intech.mysudoku.tools.*;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +23,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 
 public class GameScreenController implements Initializable {
@@ -49,9 +52,21 @@ public class GameScreenController implements Initializable {
     Text chronoText;
     @FXML
     Button exitGameButton;
+    Timer time = new Timer("00:00:00");
+    Timeline timeline = new Timeline(
+            new KeyFrame(Duration.seconds(1),
+                    e -> {
+
+                        time.oneSecondPassed();
+                       chronoText.setText(time.getCurrentTime());
+                    }));
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+       chronoText.setText(time.getCurrentTime());
+
         creator = new Creator();
         difficulty = TitleScreenController.getDifficulty();
         System.out.println("difficulty : " + difficulty);
@@ -81,6 +96,11 @@ public class GameScreenController implements Initializable {
             );
             grid.getIntFields().add(t);
         }
+
+        chronoText.setText(time.getCurrentTime());
+
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
 
     }
 

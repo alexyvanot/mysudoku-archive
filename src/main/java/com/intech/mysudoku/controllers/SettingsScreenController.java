@@ -62,6 +62,8 @@ public class SettingsScreenController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        //TODO
 //        languageChoiceBox.getItems().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("Images/FR.png"))));
 //        languageChoiceBox.getItems().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("Images/EN.png"))));
     }

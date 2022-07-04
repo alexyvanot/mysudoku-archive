@@ -1,13 +1,25 @@
 /* css for the game Screen */
-
+#titleLabel{
+    -fx-text-fill: #ffffff;
+}
 #grid {
-    -fx-background-color: #26C4EC;
+    -fx-background-color: #02b2ff;
 }
 #anchorPane {
     -fx-background-color: linear-gradient(to bottom, #242424, #666666);
 }
 #exitGameButton{
-    -fx-background-color: #06cbf7;
+    -fx-background-color: #02b2ff;
     -fx-font-size: 25 px;
     -fx-font-weight: bold;
+}
+#chonoText{
+    -fx-text-fill: #02b2ff;
+}
+#difficultyText{
+    -fx-text-fill: #02b2ff;
+}
+#toggleMusicCheckBox{
+    -fx-text-fill: #02b2ff;
+    -fx-background-color: #02b2ff;
 }

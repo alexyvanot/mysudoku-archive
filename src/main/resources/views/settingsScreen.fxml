@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.intech.mysudoku.controllers.SettingsScreenController">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@settings.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.intech.mysudoku.controllers.SettingsScreenController">
    <children>
       <Label fx:id="titleLabel" layoutX="33.0" layoutY="33.0" text="Settings">
          <font>
@@ -53,7 +53,7 @@
       <CheckBox fx:id="musicCheckBox" layoutX="243.0" layoutY="175.0" mnemonicParsing="false" onAction="#toggleMusicCheckBox" prefHeight="40.0" prefWidth="40.0" />
       <CheckBox fx:id="colorAssistanceCheckBox" layoutX="360.0" layoutY="511.0" mnemonicParsing="false" onAction="#toggleColorAssistanceCheckbox" prefHeight="40.0" prefWidth="40.0" />
       <Slider fx:id="volumeSlider" layoutX="263.0" layoutY="239.0" prefHeight="36.0" prefWidth="378.0" />
-      <ChoiceBox fx:id="languageChoiceBox" layoutX="380.0" layoutY="376.0" prefHeight="54.0" prefWidth="107.0" />
+      <ChoiceBox fx:id="languageChoiceBox" layoutX="380.0" layoutY="376.0" prefHeight="54.0" prefWidth="107.0" stylesheets="@settings.css" />
       <Button fx:id="returnButton" layoutX="703.0" layoutY="40.0" mnemonicParsing="false" onAction="#handleShowMainMenu" prefHeight="60.0" prefWidth="60.0" text="X">
          <font>
             <Font size="28.0" />

@@ -1,0 +1,5 @@
+#exitButton{
+    -fx-background-color: linear-gradient(to right, #02b2ff, #0e0d0c);
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+}
