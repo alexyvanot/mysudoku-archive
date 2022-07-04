@@ -3,10 +3,16 @@ package com.intech.mysudoku.controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.concurrent.TimeUnit;
 
 import com.intech.mysudoku.model.javafx.BoardPane;
 import com.intech.mysudoku.model.javafx.IntField;
-import com.intech.mysudoku.tools.*;
+import com.intech.mysudoku.tools.Board;
+import com.intech.mysudoku.tools.Cell;
+import com.intech.mysudoku.tools.Creator;
+import com.intech.mysudoku.tools.Level;
+import com.intech.mysudoku.tools.Solver;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -109,9 +115,23 @@ public class GameScreenController implements Initializable {
             return;
         }
         clicked = true;
+        
+        System.out.println("Solving this sudoku board:");
+        System.out.println(board);
+        System.out.println();
         solver = new Solver();
         solver.setBoard(board).solve(board.getCells(), 1);
+        try {
+			TimeUnit.SECONDS.sleep(1);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+        grid.setBoard(board);
         System.out.println(board);
+        System.out.println("get");
+        System.out.println(grid.getBoard());
+        
+        
         for (Cell cell : grid.getBoard().getCells()) {
             IntField t = new IntField(cell.getValue(), 0, 9, cell, grid);
             Font font = new Font("SansSerif", 25);
@@ -121,13 +141,16 @@ public class GameScreenController implements Initializable {
             t.setEditable(false);
             t.setPrefWidth(70);
             t.setPrefHeight(70);
+            
             grid.add(
                     t,
                     cell.getColumn(),
                     cell.getRow()
             );
             grid.getIntFields().add(t);
+            
         }
+        System.out.println(grid);
     }
 
 
