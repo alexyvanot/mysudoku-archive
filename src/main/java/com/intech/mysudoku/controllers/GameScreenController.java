@@ -28,6 +28,7 @@ public class GameScreenController implements Initializable {
     Scene scene;
     TitleScreenController titleScreenController;
     Stage stage;
+
     Level difficulty;
     Creator creator;
     Board board;

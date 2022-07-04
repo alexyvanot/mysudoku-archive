@@ -45,7 +45,7 @@ public class SettingsScreenController implements Initializable {
     @FXML
     Label selectedLanguageLabel;
     @FXML
-    ChoiceBox<Image> languageChoiceBox;
+    ChoiceBox<ImageView> languageChoiceBox;
     @FXML
     Label guiLabel;
     @FXML
@@ -64,6 +64,8 @@ public class SettingsScreenController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 //        languageChoiceBox.getItems().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("Images/FR.png"))));
 //        languageChoiceBox.getItems().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("Images/EN.png"))));
+    	
+    	
     }
 
     public void toggleMusicCheckBox(ActionEvent event) {
@@ -79,9 +81,9 @@ public class SettingsScreenController implements Initializable {
         this.stage = (Stage) anchorPane.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("views/titleScreen.fxml"));
         Parent root = loader.load();
-        Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
-        stage1.setScene(scene);
-        stage1.show();
+        stage.setScene(scene);
+        stage.show();
     }
 }

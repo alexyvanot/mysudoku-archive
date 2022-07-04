@@ -13,6 +13,8 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+import java.net.URL;
+
 public class MySudokuApp extends Application {
 
     @Override

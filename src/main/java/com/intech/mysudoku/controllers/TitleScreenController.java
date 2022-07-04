@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -63,8 +64,12 @@ public class TitleScreenController implements Initializable {
         Parent root = loader.load();
         SettingsScreenController settingsScreenController = loader.getController();
         settingsScreenController.setTitleScreenController(this);
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
+        startScene = new Scene(root);
+        URL url = ClassLoader.getSystemClassLoader().getResource("Images/icon_final.jpeg");
+        Image icon = new Image(url.openStream());
+        stage.getIcons().add(icon);
+        stage.setTitle("MySudoku");
+        stage.setScene(startScene);
         stage.show();
     }
 
