@@ -1,0 +1,13 @@
+/* css for the game Screen */
+
+#grid {
+    -fx-background-color: #26C4EC;
+}
+#anchorPane {
+    -fx-background-color: linear-gradient(to bottom, #242424, #666666);
+}
+#exitGameButton{
+    -fx-background-color: #06cbf7;
+    -fx-font-size: 25 px;
+    -fx-font-weight: bold;
+}

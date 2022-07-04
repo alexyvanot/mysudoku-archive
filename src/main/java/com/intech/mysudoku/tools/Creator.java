@@ -8,7 +8,7 @@ import java.util.ListIterator;
  * Creates a Sudoku game board according to given parameters.
  */
 public class Creator {
-    private Solver solver;
+    private final Solver solver;
     private Board board;
     private List<Cell> blankCells;
     private int limit;

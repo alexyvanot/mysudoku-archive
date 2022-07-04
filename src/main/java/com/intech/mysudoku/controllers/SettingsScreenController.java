@@ -1,5 +1,9 @@
 package com.intech.mysudoku.controllers;
 
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,15 +16,8 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.Objects;
-import java.util.ResourceBundle;
 
 
 public class SettingsScreenController implements Initializable {
@@ -55,6 +52,9 @@ public class SettingsScreenController implements Initializable {
     Label colorAssistanceLabel;
     @FXML
     CheckBox colorAssistanceCheckBox;
+    
+    // TODO
+//    MusicController mc = new MusicController();
 
     public void setTitleScreenController (TitleScreenController titleScreenController) {
         this.titleScreenController = titleScreenController;
@@ -69,12 +69,14 @@ public class SettingsScreenController implements Initializable {
     }
 
     public void toggleMusicCheckBox(ActionEvent event) {
-
+    	// TODO
+    	// boolean var = true ? mc.play() : mc.stop();
     }
 
     public void toggleColorAssistanceCheckbox(ActionEvent event) {
-
+    	
     }
+    
    public void handleShowMainMenu(ActionEvent event) throws IOException {
         this.stage = (Stage) anchorPane.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("views/titleScreen.fxml"));
