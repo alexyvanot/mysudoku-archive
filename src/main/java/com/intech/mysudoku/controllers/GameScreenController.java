@@ -105,6 +105,8 @@ public class GameScreenController implements Initializable {
     }
 
     public void handleResolve() {
+        boardPane = new BoardPane();
+        boardPane.setCellValueCount(0);
         if (clicked) {
             return;
         }
