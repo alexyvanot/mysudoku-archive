@@ -56,7 +56,6 @@ public class MySudokuApp extends Application {
             Image icon = new Image(url.openStream());
             primaryStage.getIcons().add(icon);
             primaryStage.setTitle("MySudoku");
-            primaryStage.setTitle("MySudoku");
             primaryStage.setScene(scene);
             primaryStage.show();
 
