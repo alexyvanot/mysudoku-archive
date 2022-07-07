@@ -74,4 +74,10 @@ public class WinScreenController implements Initializable {
     public void setTitleScreenController (TitleScreenController titleScreenController) {
         this.titleScreenController = titleScreenController;
     }
+
+    public void showMainMenu(javafx.event.ActionEvent event) {
+    }
+
+    public void handleReplayGame(javafx.event.ActionEvent event) {
+    }
 }

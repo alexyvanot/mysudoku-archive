@@ -20,10 +20,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+
 
 
 public class GameScreenController implements Initializable {
@@ -73,29 +76,36 @@ public class GameScreenController implements Initializable {
         difficultyText.setText(difficulty.toString());
         board = creator.create(difficulty);
         grid.setBoard(board);
+
         for (Cell cell : grid.getBoard().getCells()) {
             String txt = cell.getValue().toString();
             //TextField t = new TextField();
+
             IntField t = new IntField(cell.getValue(), 0, 9, cell, grid);
             Font font = new Font("SansSerif", 25);
             t.setFont(font);
             t.setAlignment(Pos.CENTER);
-            t.setStyle("-fx-background-color: black, -fx-control-inner-background; -fx-background-insets: 0, 2; -fx-padding: 2;");
+            t.setStyle("-fx-background-color: #0e0d0c, -fx-control-inner-background;-fx-grid-lines-visible: true; -fx-background-insets: 0, 4; -fx-padding: 2;");
             if(txt.equals("0")) {
                 t.setEditable(true);
                 t.setText("");
+                t.setFont(Font.font("SansSerif", FontWeight.BOLD, 26));
+
+
             } else {
                 t.setEditable(false);
-            }
+
+
+             }
             t.setPrefWidth(70);
             t.setPrefHeight(70);
-            grid.add(
-                    t,
+            grid.add(t,
                     cell.getColumn(),
                     cell.getRow()
             );
             grid.getIntFields().add(t);
         }
+
 
         chronoText.setText(time.getCurrentTime());
 
@@ -119,6 +129,7 @@ public class GameScreenController implements Initializable {
         stage1.setScene(scene);
         stage1.show();
     }
+
 
 
 }
