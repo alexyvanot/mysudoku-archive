@@ -86,29 +86,27 @@ public class GameScreenController implements Initializable {
             t.setFont(font);
             t.setAlignment(Pos.CENTER);
             t.setStyle("-fx-background-color: #0e0d0c, -fx-control-inner-background;-fx-grid-lines-visible: true; -fx-background-insets: 0, 4; -fx-padding: 2;");
+            
             if(txt.equals("0")) {
                 t.setEditable(true);
                 t.setText("");
                 t.setFont(Font.font("SansSerif", FontWeight.BOLD, 26));
-
-
+            
             } else {
                 t.setEditable(false);
-
-
-             }
+            
+            }
+            
             t.setPrefWidth(70);
             t.setPrefHeight(70);
-            grid.add(t,
-                    cell.getColumn(),
-                    cell.getRow()
-            );
+            
+            grid.add(t, cell.getColumn(), cell.getRow());
             grid.getIntFields().add(t);
+        
         }
 
 
         chronoText.setText(time.getCurrentTime());
-
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
 
