@@ -2,6 +2,7 @@ package com.intech.mysudoku.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
 
@@ -17,6 +18,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -24,7 +26,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -33,6 +37,7 @@ public class GameScreenController implements Initializable {
 
     Scene scene;
     TitleScreenController titleScreenController;
+    WinScreenController winScreenController;
     Stage stage;
     Level difficulty;
     Creator creator;
@@ -40,6 +45,8 @@ public class GameScreenController implements Initializable {
     BoardPane boardPane;
     Solver solver;
     boolean clicked = false;
+    static int N = 9;
+
 
     @FXML
     AnchorPane anchorPane;
@@ -68,10 +75,11 @@ public class GameScreenController implements Initializable {
         difficultyText.setText(difficulty.toString());
         board = creator.create(difficulty);
         grid.setBoard(board);
+        grid.setPadding(new Insets(10,10,10,10));
         for (Cell cell : grid.getBoard().getCells()) {
             String txt = cell.getValue().toString();
             //TextField t = new TextField();
-            IntField t = new IntField(cell.getValue(), 0, 9, cell, grid);
+            IntField t = new IntField(cell.getValue(), 0, 9, cell, grid, this);
             Font font = new Font("SansSerif", 25);
             t.setFont(font);
             t.setAlignment(Pos.CENTER);
@@ -81,6 +89,7 @@ public class GameScreenController implements Initializable {
                 t.setText("");
             } else {
                 t.setEditable(false);
+                t.setFont(Font.font("SansSerif", FontWeight.BOLD, 25));
             }
             t.setPrefWidth(70);
             t.setPrefHeight(70);
@@ -98,19 +107,23 @@ public class GameScreenController implements Initializable {
         this.titleScreenController = titleScreenController;
     }
 
+    public void setWinScreenController(WinScreenController winScreenController) {
+        this.winScreenController = winScreenController;
+    }
+
     public void handleExitGame(ActionEvent event) throws IOException {
         boardPane = new BoardPane();
         boardPane.setCellValueCount(0);
         this.stage = (Stage) anchorPane.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("views/titleScreen.fxml"));
         Parent root = loader.load();
-        Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
-        stage1.setScene(scene);
-        stage1.show();
+        stage.setScene(scene);
+        stage.show();
     }
 
-    public void handleResolve() {
+    public void handleResolve() throws IOException {
         boardPane = new BoardPane();
         boardPane.setCellValueCount(0);
         if (clicked) {
@@ -135,7 +148,7 @@ public class GameScreenController implements Initializable {
         
         
         for (Cell cell : grid.getBoard().getCells()) {
-            IntField t = new IntField(cell.getValue(), 0, 9, cell, grid);
+            IntField t = new IntField(cell.getValue(), 0, 9, cell, grid, this);
             Font font = new Font("SansSerif", 25);
             t.setFont(font);
             t.setAlignment(Pos.CENTER);
@@ -153,7 +166,96 @@ public class GameScreenController implements Initializable {
             
         }
         System.out.println(grid);
+        handleShowWinScreen();
     }
+
+    public void handleShowWinScreen() throws IOException {
+        stage = (Stage) anchorPane.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("views/winScreen.fxml"));
+        Parent root = loader.load();
+        WinScreenController winScreenController = loader.getController();
+        winScreenController.setGameScreenController(this);
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public BoardPane getBoardPane() {
+        return boardPane;
+    }
+
+    static boolean isinRange(int[][] board) {
+        // Traverse board[][] array
+        for(int i = 0; i < N; i++)
+        {
+            for(int j = 0; j < N; j++)
+            {
+
+                // Check if board[i][j]
+                // lies in the range
+                if (board[i][j] <= 0 ||
+                        board[i][j] > 9)
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    static boolean isValidSudoku(int[][] board) {
+        if (isinRange(board) == false) {
+            return false;
+        }
+
+        boolean[] unique = new boolean[N + 1];
+
+        for (int i = 0; i < N; i++) {
+            Arrays.fill(unique, false);
+            for (int j = 0; j < N; j++) {
+                int Z = board[i][j];
+
+                if (unique[Z]) {
+                    return false;
+                }
+                unique[Z] = true;
+            }
+        }
+
+        for (int i = 0; i < N - 2; i +=3) {
+            for (int j = 0; j < N - 2; j += 3) {
+                Arrays.fill(unique, false);
+
+                for (int k = 0; k < 3; k++) {
+                    for (int l = 0; l < 3; l++) {
+                        int X = i + k;
+                        int Y = j + l;
+                        int Z = board[X][Y];
+
+                        if (unique[Z]) {
+                            return false;
+                        }
+                        unique[Z] = true;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
+    public boolean verify() {
+        BoardPane board = getBoardPane();
+        Board b = board.getBoard();
+        int[][] gridint = new int[9][9];
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; i < 9; i++) {
+                Cell c = b.getCell(i, j);
+                gridint[i][j] = c.getValue();
+            }
+        }
+        return isValidSudoku(gridint);
+    }
+
 
 
 }

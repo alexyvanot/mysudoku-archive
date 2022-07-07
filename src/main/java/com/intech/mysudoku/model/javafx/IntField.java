@@ -1,5 +1,6 @@
 package com.intech.mysudoku.model.javafx;
 
+import com.intech.mysudoku.controllers.GameScreenController;
 import com.intech.mysudoku.tools.Board;
 import com.intech.mysudoku.tools.Cell;
 import javafx.beans.property.IntegerProperty;
@@ -11,9 +12,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
+import java.io.IOException;
+
 public class IntField extends TextField {
 
     BoardPane boardPane;
+    GameScreenController gameScreenController;
 
     final private IntegerProperty value;
     final private int minValue;
@@ -31,8 +35,8 @@ public class IntField extends TextField {
     public IntegerProperty valueProperty() { return value; }
 
 
-    public IntField(int initialValue, int minValue, int maxValue, Cell cell, BoardPane pane) {
-
+    public IntField(int initialValue, int minValue, int maxValue, Cell cell, BoardPane pane, GameScreenController gsc) {
+        gameScreenController = gsc;
         if (minValue > maxValue)
             throw new IllegalArgumentException(
                     "IntField min value " + minValue + " greater than max value " + maxValue
@@ -85,6 +89,16 @@ public class IntField extends TextField {
                         intField.setText(newValue.toString());
                         boardPane.setCellValueCount(boardPane.getCellValueCount() + 1);
                         System.out.println("boardpane cellValueCount: " + boardPane.getCellValueCount());
+                        if (boardPane.getCellValueCount() == 81) {
+                            System.out.println("grid completed : checking");
+                            if (gameScreenController.verify()) {
+                                try {
+                                    gameScreenController.handleShowWinScreen();
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+                            }
+                        }
                     }
                 }
             }
