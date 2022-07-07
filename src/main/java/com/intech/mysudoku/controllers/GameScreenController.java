@@ -85,14 +85,27 @@ public class GameScreenController implements Initializable {
             Font font = new Font("SansSerif", 25);
             t.setFont(font);
             t.setAlignment(Pos.CENTER);
-            t.setStyle("-fx-background-color: #0e0d0c, -fx-control-inner-background;-fx-grid-lines-visible: true; -fx-background-insets: 0, 4; -fx-padding: 2;");
             
             if(txt.equals("0")) {
                 t.setEditable(true);
+                t.setStyle(""
+                		+ "-fx-background-color: #0e0d0c,"
+                		+ "-fx-control-inner-background;"
+                		+ "-fx-grid-lines-visible: true;"
+                		+ "-fx-background-insets: 0, 4;"
+                		+ "-fx-padding: 2;"
+                		);
                 t.setText("");
                 t.setFont(Font.font("SansSerif", FontWeight.BOLD, 26));
             
             } else {
+            	t.setStyle(""
+                		+ "-fx-background-color: #0e0d0c,"
+                		+ "-fx-control-inner-background;"
+                		+ "-fx-grid-lines-visible: true;"
+                		+ "-fx-background-insets: 0, 4;"
+                		+ "-fx-padding: 2;"
+                		);
                 t.setEditable(false);
             
             }
@@ -107,6 +120,7 @@ public class GameScreenController implements Initializable {
 
 
         chronoText.setText(time.getCurrentTime());
+        chronoText.setStyle("-fx-text-color: blue");
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
 
