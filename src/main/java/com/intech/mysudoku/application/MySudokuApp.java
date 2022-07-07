@@ -58,7 +58,7 @@ public class MySudokuApp extends Application {
             primaryStage.setTitle("MySudoku");
             primaryStage.setScene(scene);
             primaryStage.show();
-
+//            primaryStage.setResizable(false);
 
             } catch (Exception e) {
             e.printStackTrace();
