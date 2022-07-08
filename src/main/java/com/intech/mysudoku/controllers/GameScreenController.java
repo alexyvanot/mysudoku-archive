@@ -102,6 +102,12 @@ public class GameScreenController implements Initializable {
             
             if(txt.equals("0")) {
                 t.setEditable(true);
+                t.setStyle("-fx-background-color: black,"
+                		+ "-fx-control-inner-background;"
+                		+ "-fx-background-insets: 0, 2;"
+                		+ "-fx-padding: 2;"
+                		);
+                /*
                 t.setStyle(""
                 		+ "-fx-background-color: #0e0d0c,"
                 		+ "-fx-control-inner-background;"
@@ -109,10 +115,17 @@ public class GameScreenController implements Initializable {
                 		+ "-fx-background-insets: 0, 4;"
                 		+ "-fx-padding: 2;"
                 		);
+                */
                 t.setText("");
-                t.setFont(Font.font("SansSerif", FontWeight.BOLD, 26));
+                t.setFont(Font.font("SansSerif", FontWeight.NORMAL, 26));
             
             } else {
+            	t.setStyle("-fx-background-color: black,"
+                		+ "-fx-control-inner-background;"
+                		+ "-fx-background-insets: 0, 2;"
+                		+ "-fx-padding: 2;"
+                		);
+            	/*
             	t.setStyle(""
                 		+ "-fx-background-color: #0e0d0c,"
                 		+ "-fx-control-inner-background;"
@@ -120,6 +133,7 @@ public class GameScreenController implements Initializable {
                 		+ "-fx-background-insets: 0, 4;"
                 		+ "-fx-padding: 2;"
                 		);
+                */
                 t.setEditable(false);
                 t.setFont(Font.font("SansSerif", FontWeight.BOLD, 25));
             }
@@ -189,19 +203,20 @@ public class GameScreenController implements Initializable {
             Font font = new Font("SansSerif", 25);
             t.setFont(font);
             t.setAlignment(Pos.CENTER);
-            t.setStyle("-fx-background-color: black, -fx-control-inner-background; -fx-background-insets: 0, 2; -fx-padding: 2;");
+            t.setStyle("-fx-background-color: black,"
+            		+ "-fx-control-inner-background;"
+            		+ "-fx-background-insets: 0, 2;"
+            		+ "-fx-padding: 2;"
+            		);
             t.setEditable(false);
             t.setPrefWidth(70);
             t.setPrefHeight(70);
             
-            grid.add(
-                    t,
-                    cell.getColumn(),
-                    cell.getRow()
-            );
+            grid.add(t, cell.getColumn(), cell.getRow());
             grid.getIntFields().add(t);
             
         }
+        
         System.out.println(grid);
         handleShowWinScreen();
     }
