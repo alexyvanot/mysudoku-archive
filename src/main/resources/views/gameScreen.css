@@ -9,17 +9,14 @@
 #exitGameButton{
     -fx-background-color: #02b2ff;
     -fx-font-size: 25 px;
-    -fx-font-weight: bold;
+    -fx-font-weight: Normal;
 }
 #chronoText{
     -fx-text-fill: #02b2ff;
-
 }
-#difficultyText{
 
-    -fx-text-fill: #02b2ff;
-}
-#toggleMusicCheckBox{
-    -fx-text-fill: #02b2ff;
+.button{
     -fx-background-color: #02b2ff;
- }
+    -fx-font-size: 25 px;
+    -fx-font-weight: Normal;
+}
