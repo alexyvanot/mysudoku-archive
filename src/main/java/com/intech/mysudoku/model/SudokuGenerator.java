@@ -1,5 +1,13 @@
 package com.intech.mysudoku.model;
 
+/**
+ * 
+ * Unused code sadly caused by deprecation T-T
+ * @author alexy
+ *
+ */
+
+
 public class SudokuGenerator {
 
     int[] mat[];

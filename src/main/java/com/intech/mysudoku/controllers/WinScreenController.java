@@ -13,8 +13,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.event.ActionEvent;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,6 +25,7 @@ public class WinScreenController implements Initializable {
     Scene scene;
     Stage stage;
     TitleScreenController titleScreenController;
+    GameScreenController gameScreenController;
     BoardPane boardPane;
     Level difficulty;
 
@@ -67,11 +68,22 @@ public class WinScreenController implements Initializable {
         stage.show();
     }
 
-    public void handleReplayGame(ActionEvent event) throws IOException {
-        titleScreenController.handleNewGame();
+    public void handleReplayGame() throws IOException {
+        this.stage = (Stage) anchorPane.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("views/gameScreen.fxml"));
+        Parent root = loader.load();
+        GameScreenController gameScreenController = loader.getController();
+        gameScreenController.setWinScreenController(this);
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void setTitleScreenController (TitleScreenController titleScreenController) {
         this.titleScreenController = titleScreenController;
+    }
+
+    public void setGameScreenController(GameScreenController gameScreenController) {
+        this.gameScreenController = gameScreenController;
     }
 }
