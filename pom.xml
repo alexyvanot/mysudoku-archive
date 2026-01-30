@@ -56,7 +56,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.intech.mysudoku.application.MySudokuApp</mainClass>
+                            <mainClass>com.intech.mysudoku.application.Launcher</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
