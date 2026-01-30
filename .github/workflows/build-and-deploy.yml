@@ -1,0 +1,96 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up JDK 11
+      uses: actions/setup-java@v4
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+        cache: maven
+
+    - name: Build with Maven
+      run: mvn clean package assembly:single -DskipTests
+
+    - name: Rename JAR file
+      run: mv target/mysudoku-*-jar-with-dependencies.jar target/mysudoku.jar
+
+    - name: Prepare docs folder
+      run: |
+        # Copy JAR to docs folder
+        cp target/mysudoku.jar docs/mysudoku.jar
+        
+        # Copy assets to docs folder
+        mkdir -p docs/assets
+        cp src/main/resources/images/iconhd.png docs/assets/
+        cp src/main/resources/images/icon_final.jpeg docs/assets/
+        cp src/main/resources/images/winCup.png docs/assets/
+
+    - name: Upload JAR artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: mysudoku-jar
+        path: target/mysudoku.jar
+
+    - name: Deploy to GitHub Pages
+      if: github.ref == 'refs/heads/main'
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./docs
+        cname: alexyvanot.fr
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - name: Download artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: mysudoku-jar
+
+    - name: Get current date
+      id: date
+      run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: v2.0-${{ steps.date.outputs.date }}
+        name: MySudoku v2.0 (${{ steps.date.outputs.date }})
+        body: |
+          ## 🎮 MySudoku - Remastered Edition
+          
+          ### What's New
+          - ✅ Fixed solver not respecting initial grid values
+          - ✅ Added color-coded solution feedback
+          - ✅ Added 3x3 block borders for better visibility
+          - ✅ Improved visual distinction between cells
+          
+          ### Download
+          Download `mysudoku.jar` below and run with:
+          ```bash
+          java -jar mysudoku.jar
+          ```
+          
+          **Requirements:** Java 11 or higher
+        files: mysudoku.jar
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
