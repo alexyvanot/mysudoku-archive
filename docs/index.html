@@ -28,25 +28,76 @@
         p {
             color: #888;
         }
-        .download-btn {
-            display: inline-block;
-            margin: 30px 0;
-            padding: 15px 40px;
-            background: #8875df;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-        }
-        .download-btn:hover {
-            background: #9985ef;
-        }
         .info {
             color: #666;
             font-size: 0.9rem;
         }
         a {
             color: #8875df;
+        }
+        #releases {
+            margin: 30px 0;
+            text-align: left;
+        }
+        .release {
+            background: #252525;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        .release-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .release-name {
+            font-weight: bold;
+            color: #fff;
+        }
+        .release-date {
+            color: #666;
+            font-size: 0.85rem;
+        }
+        .release-tag {
+            background: #8875df;
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-left: 10px;
+        }
+        .assets {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .asset-btn {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #333;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+        .asset-btn:hover {
+            background: #444;
+        }
+        .asset-btn.exe {
+            background: #2d5a27;
+        }
+        .asset-btn.exe:hover {
+            background: #3d7a37;
+        }
+        .asset-btn.jar {
+            background: #5a4327;
+        }
+        .asset-btn.jar:hover {
+            background: #7a5a37;
+        }
+        .loading {
+            color: #666;
         }
     </style>
 </head>
@@ -56,10 +107,55 @@
         <h1>MySudoku</h1>
         <p>A Sudoku game built with JavaFX</p>
         
-        <a href="download" class="download-btn">Download</a>
+        <div id="releases">
+            <p class="loading">Loading releases...</p>
+        </div>
         
         <p class="info">Requires Java 11+</p>
         <p class="info"><a href="https://github.com/alexyvanot/mysudoku-archive">View on GitHub</a></p>
     </div>
+
+    <script>
+        async function loadReleases() {
+            const container = document.getElementById('releases');
+            try {
+                const res = await fetch('https://api.github.com/repos/alexyvanot/mysudoku-archive/releases');
+                const releases = await res.json();
+                
+                if (!releases.length) {
+                    container.innerHTML = '<p>No releases available yet.</p>';
+                    return;
+                }
+                
+                container.innerHTML = releases.map((release, i) => {
+                    const date = new Date(release.published_at).toLocaleDateString();
+                    const assets = release.assets.filter(a => a.name.endsWith('.exe') || a.name.endsWith('.jar'));
+                    
+                    return `
+                        <div class="release">
+                            <div class="release-header">
+                                <span>
+                                    <span class="release-name">${release.name || release.tag_name}</span>
+                                    ${i === 0 ? '<span class="release-tag">Latest</span>' : ''}
+                                </span>
+                                <span class="release-date">${date}</span>
+                            </div>
+                            <div class="assets">
+                                ${assets.map(asset => {
+                                    const isExe = asset.name.endsWith('.exe');
+                                    const isJar = asset.name.endsWith('.jar');
+                                    const cls = isExe ? 'exe' : (isJar ? 'jar' : '');
+                                    return `<a href="${asset.browser_download_url}" class="asset-btn ${cls}">${asset.name}</a>`;
+                                }).join('')}
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            } catch (e) {
+                container.innerHTML = '<p>Failed to load releases. <a href="https://github.com/alexyvanot/mysudoku-archive/releases">View on GitHub</a></p>';
+            }
+        }
+        loadReleases();
+    </script>
 </body>
 </html>
