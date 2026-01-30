@@ -23,6 +23,7 @@ public class IntField extends TextField {
     final private int minValue;
     final private int maxValue;
     private Cell cell;
+    private boolean initialCell = false; // True si c'est une case initiale du puzzle (non éditable)
 
     public BoardPane getBoardPane() {
         return boardPane;
@@ -33,6 +34,10 @@ public class IntField extends TextField {
     public int  getValue()                 { return value.getValue(); }
     public void setValue(int newValue)     { value.setValue(newValue); }
     public IntegerProperty valueProperty() { return value; }
+    
+    public Cell getCell() { return cell; }
+    public boolean isInitialCell() { return initialCell; }
+    public void setInitialCell(boolean initial) { this.initialCell = initial; }
 
 
     public IntField(int initialValue, int minValue, int maxValue, Cell cell, BoardPane pane, GameScreenController gsc) {

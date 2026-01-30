@@ -28,6 +28,8 @@ public class WinScreenController implements Initializable {
     GameScreenController gameScreenController;
     BoardPane boardPane;
     Level difficulty;
+    boolean gaveUp = false;
+    String finalTime = "";
 
     @FXML
     AnchorPane anchorPane;
@@ -85,5 +87,21 @@ public class WinScreenController implements Initializable {
 
     public void setGameScreenController(GameScreenController gameScreenController) {
         this.gameScreenController = gameScreenController;
+    }
+    
+    public void setGaveUp(boolean gaveUp) {
+        this.gaveUp = gaveUp;
+        if (gaveUp) {
+            subtitleLabel.setText("Game Over");
+            subtitleLabel.setTextFill(javafx.scene.paint.Color.web("#e74c3c"));
+        } else {
+            subtitleLabel.setText("You WON !");
+            subtitleLabel.setTextFill(javafx.scene.paint.Color.web("#32ba1a"));
+        }
+    }
+    
+    public void setFinalTime(String time) {
+        this.finalTime = time;
+        chronoText.setText(time);
     }
 }

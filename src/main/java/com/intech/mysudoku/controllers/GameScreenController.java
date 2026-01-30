@@ -50,6 +50,7 @@ public class GameScreenController implements Initializable {
     BoardPane boardPane;
     Solver solver;
     boolean clicked = false;
+    boolean gaveUp = false;
     static int N = 9;
 
 
@@ -92,50 +93,34 @@ public class GameScreenController implements Initializable {
         board = creator.create(difficulty);
         grid.setBoard(board);
         grid.setPadding(new Insets(10,10,10,10));
+        
         for (Cell cell : grid.getBoard().getCells()) {
             String txt = cell.getValue().toString();
-            //TextField t = new TextField();
             IntField t = new IntField(cell.getValue(), 0, 9, cell, grid, this);
-            Font font = new Font("SansSerif", 25);
-            t.setFont(font);
             t.setAlignment(Pos.CENTER);
             
+            // Calculer les bordures pour les carrés 3x3
+            String borderStyle = getBorderStyle(cell.getRow(), cell.getColumn());
+            
             if(txt.equals("0")) {
+                // Case éditable - fond légèrement différent
                 t.setEditable(true);
-                t.setStyle("-fx-background-color: black,"
-                		+ "-fx-control-inner-background;"
-                		+ "-fx-background-insets: 0, 2;"
-                		+ "-fx-padding: 2;"
-                		);
-                /*
-                t.setStyle(""
-                		+ "-fx-background-color: #0e0d0c,"
-                		+ "-fx-control-inner-background;"
-                		+ "-fx-grid-lines-visible: true;"
-                		+ "-fx-background-insets: 0, 4;"
-                		+ "-fx-padding: 2;"
-                		);
-                */
+                t.setStyle("-fx-background-color: #1a1a2e, #16213e;"
+                        + "-fx-background-insets: 0, 2;"
+                        + "-fx-text-fill: #4fc3f7;"
+                        + borderStyle);
                 t.setText("");
                 t.setFont(Font.font("SansSerif", FontWeight.NORMAL, 26));
-            
+                t.setInitialCell(false);
             } else {
-            	t.setStyle("-fx-background-color: black,"
-                		+ "-fx-control-inner-background;"
-                		+ "-fx-background-insets: 0, 2;"
-                		+ "-fx-padding: 2;"
-                		);
-            	/*
-            	t.setStyle(""
-                		+ "-fx-background-color: #0e0d0c,"
-                		+ "-fx-control-inner-background;"
-                		+ "-fx-grid-lines-visible: true;"
-                		+ "-fx-background-insets: 0, 4;"
-                		+ "-fx-padding: 2;"
-                		);
-                */
+                // Case non-éditable - chiffre de base en gras, fond plus clair
+                t.setStyle("-fx-background-color: #2d2d44, #252540;"
+                        + "-fx-background-insets: 0, 2;"
+                        + "-fx-text-fill: #ffffff;"
+                        + borderStyle);
                 t.setEditable(false);
                 t.setFont(Font.font("SansSerif", FontWeight.BOLD, 25));
+                t.setInitialCell(true);
             }
             
             t.setPrefWidth(70);
@@ -143,7 +128,6 @@ public class GameScreenController implements Initializable {
             
             grid.add(t, cell.getColumn(), cell.getRow());
             grid.getIntFields().add(t);
-        
         }
 
 
@@ -181,44 +165,100 @@ public class GameScreenController implements Initializable {
             return;
         }
         clicked = true;
+        gaveUp = true; // Marquer comme abandon
+        
+        // Arrêter le timer
+        timeline.stop();
         
         System.out.println("Solving this sudoku board:");
         System.out.println(board);
         System.out.println();
-        solver = new Solver();
-        solver.setBoard(board).solve(board.getCells(), 1);
-        try {
-			TimeUnit.SECONDS.sleep(1);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-        grid.setBoard(board);
-        System.out.println(board);
-        System.out.println("get");
-        System.out.println(grid.getBoard());
         
+        // Sauvegarder les valeurs entrées par l'utilisateur AVANT de restaurer
+        java.util.Map<Cell, Integer> userValues = new java.util.HashMap<>();
+        for (Cell cell : board.getCells()) {
+            userValues.put(cell, cell.getValue());
+        }
+        
+        // Restaurer la grille originale (annuler les entrées de l'utilisateur)
+        board.load();
+        System.out.println("After load (original puzzle):");
+        System.out.println(board);
+        
+        solver = new Solver();
+        // Utiliser uniquement les cellules vides pour la résolution
+        java.util.List<Cell> blankCells = Creator.getBlankCells(board);
+        solver.setBoard(board).solve(blankCells, 1);
+        
+        grid.setBoard(board);
+        System.out.println("After solve:");
+        System.out.println(board);
+        
+        // Effacer la grille actuelle et afficher la solution
+        grid.getChildren().clear();
+        grid.getIntFields().clear();
         
         for (Cell cell : grid.getBoard().getCells()) {
             IntField t = new IntField(cell.getValue(), 0, 9, cell, grid, this);
-            Font font = new Font("SansSerif", 25);
-            t.setFont(font);
             t.setAlignment(Pos.CENTER);
-            t.setStyle("-fx-background-color: black,"
-            		+ "-fx-control-inner-background;"
-            		+ "-fx-background-insets: 0, 2;"
-            		+ "-fx-padding: 2;"
-            		);
             t.setEditable(false);
             t.setPrefWidth(70);
             t.setPrefHeight(70);
             
+            // Calculer les bordures pour les carrés 3x3
+            String borderStyle = getBorderStyle(cell.getRow(), cell.getColumn());
+            
+            // Vérifier si c'était une case initiale du puzzle
+            boolean isInitialCell = cell.getSavedValue() != 0;
+            
+            // Récupérer ce que l'utilisateur avait mis
+            int userValue = userValues.get(cell);
+            int correctValue = cell.getValue(); // La solution
+            int originalValue = cell.getSavedValue(); // La valeur initiale du puzzle
+            
+            String textColor;
+            FontWeight fontWeight = FontWeight.NORMAL;
+            
+            if (isInitialCell) {
+                // Case initiale du puzzle - texte blanc en gras
+                textColor = "#ffffff";
+                fontWeight = FontWeight.BOLD;
+            } else if (userValue == correctValue && userValue != 0) {
+                // L'utilisateur avait mis le bon chiffre - VERT
+                textColor = "#2ecc71";
+                fontWeight = FontWeight.BOLD;
+            } else if (userValue == 0) {
+                // Case vide complétée par le programme - ROUGE
+                textColor = "#e74c3c";
+            } else {
+                // L'utilisateur s'était trompé, corrigé par le programme - ORANGE
+                textColor = "#f39c12";
+            }
+            
+            // Fond selon si c'était une case initiale ou non
+            String bgColor = isInitialCell ? "#2d2d44, #252540" : "#1a1a2e, #16213e";
+            
+            t.setStyle("-fx-background-color: " + bgColor + ";"
+                    + "-fx-background-insets: 0, 2;"
+                    + "-fx-text-fill: " + textColor + ";"
+                    + borderStyle);
+            t.setFont(Font.font("SansSerif", fontWeight, 25));
+            
             grid.add(t, cell.getColumn(), cell.getRow());
             grid.getIntFields().add(t);
-            
         }
         
         System.out.println(grid);
-        handleShowWinScreen();
+        
+        // Changer le texte du bouton Give Up pour continuer vers l'écran de fin
+        giveUpButton.setText("Continue");
+        giveUpButton.setOnAction(e -> {
+            try {
+                handleShowWinScreen();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
     }
 
     public void handleShowWinScreen() throws IOException {
@@ -227,9 +267,37 @@ public class GameScreenController implements Initializable {
         Parent root = loader.load();
         WinScreenController winScreenController = loader.getController();
         winScreenController.setGameScreenController(this);
+        winScreenController.setGaveUp(gaveUp);
+        winScreenController.setFinalTime(time.getCurrentTime());
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+    
+    public boolean isGaveUp() {
+        return gaveUp;
+    }
+    
+    /**
+     * Génère le style de bordure pour créer les lignes épaisses des carrés 3x3
+     */
+    private String getBorderStyle(int row, int col) {
+        int top = 1, right = 1, bottom = 1, left = 1;
+        
+        // Bordures épaisses pour les limites des blocs 3x3
+        if (row % 3 == 0) top = 3;      // Haut du bloc
+        if (row % 3 == 2) bottom = 3;   // Bas du bloc  
+        if (col % 3 == 0) left = 3;     // Gauche du bloc
+        if (col % 3 == 2) right = 3;    // Droite du bloc
+        
+        // Bordures extérieures encore plus épaisses
+        if (row == 0) top = 4;
+        if (row == 8) bottom = 4;
+        if (col == 0) left = 4;
+        if (col == 8) right = 4;
+        
+        return "-fx-border-color: #6c63ff;"
+             + "-fx-border-width: " + top + " " + right + " " + bottom + " " + left + ";";
     }
 
     public BoardPane getBoardPane() {

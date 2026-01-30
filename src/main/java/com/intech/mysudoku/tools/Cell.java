@@ -75,6 +75,13 @@ public class Cell {
     public void load() {
         value = save;
     }
+    
+    /**
+     * @return the saved value (valeur initiale du puzzle)
+     */
+    public int getSavedValue() {
+        return save;
+    }
 
     /**
      * Save a value which is solution for given Cell in particular game board for future use.
