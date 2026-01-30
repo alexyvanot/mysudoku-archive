@@ -1,4 +1,4 @@
-# 🎮 MySudoku
+# MySudoku
 
 A JavaFX Sudoku game built during my 2nd year of studies, now remastered with bug fixes and visual improvements.
 
