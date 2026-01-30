@@ -84,10 +84,16 @@ jobs:
       with:
         name: mysudoku-jar
 
+    - name: Set up JDK
+      uses: actions/setup-java@v4
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+
     - name: Install Launch4j
       run: |
-        wget -q https://sourceforge.net/projects/launch4j/files/launch4j-3/3.50/launch4j-3.50-linux-x64.tgz
-        tar -xzf launch4j-3.50-linux-x64.tgz
+        sudo apt-get update
+        sudo apt-get install -y launch4j
 
     - name: Create Launch4j config
       run: |
@@ -95,31 +101,23 @@ jobs:
         <launch4jConfig>
           <dontWrapJar>false</dontWrapJar>
           <headerType>gui</headerType>
-          <jar>mysudoku.jar</jar>
+          <jar>$PWD/mysudoku.jar</jar>
           <outfile>MySudoku.exe</outfile>
-          <errTitle></errTitle>
-          <cmdLine></cmdLine>
           <chdir>.</chdir>
           <priority>normal</priority>
           <downloadUrl>https://adoptium.net/</downloadUrl>
-          <supportUrl></supportUrl>
           <stayAlive>false</stayAlive>
-          <restartOnCrash>false</restartOnCrash>
-          <manifest></manifest>
           <jre>
-            <path></path>
-            <bundledJre64Bit>false</bundledJre64Bit>
-            <bundledJreAsFallback>false</bundledJreAsFallback>
             <minVersion>11</minVersion>
-            <maxVersion></maxVersion>
             <jdkPreference>preferJre</jdkPreference>
             <runtimeBits>64/32</runtimeBits>
           </jre>
         </launch4jConfig>
         EOF
+        sed -i "s|\$PWD|$(pwd)|g" config.xml
 
     - name: Create EXE
-      run: ./launch4j/launch4j config.xml
+      run: launch4j config.xml
 
     - name: Get current date
       id: date
