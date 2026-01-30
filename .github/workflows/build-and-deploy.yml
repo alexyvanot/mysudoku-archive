@@ -92,17 +92,18 @@ jobs:
 
     - name: Install Launch4j
       run: |
-        sudo apt-get update
-        sudo apt-get install -y launch4j
+        wget -q -O launch4j.tgz "https://sourceforge.net/projects/launch4j/files/launch4j-3/3.50/launch4j-3.50-linux-x64.tgz/download"
+        tar -xzf launch4j.tgz
+        chmod +x launch4j/launch4j
 
     - name: Create Launch4j config
       run: |
-        cat > config.xml << 'EOF'
+        cat > config.xml << EOF
         <launch4jConfig>
           <dontWrapJar>false</dontWrapJar>
           <headerType>gui</headerType>
-          <jar>$PWD/mysudoku.jar</jar>
-          <outfile>MySudoku.exe</outfile>
+          <jar>$(pwd)/mysudoku.jar</jar>
+          <outfile>$(pwd)/MySudoku.exe</outfile>
           <chdir>.</chdir>
           <priority>normal</priority>
           <downloadUrl>https://adoptium.net/</downloadUrl>
@@ -114,10 +115,9 @@ jobs:
           </jre>
         </launch4jConfig>
         EOF
-        sed -i "s|\$PWD|$(pwd)|g" config.xml
 
     - name: Create EXE
-      run: launch4j config.xml
+      run: java -jar launch4j/launch4j.jar config.xml
 
     - name: Get current date
       id: date
