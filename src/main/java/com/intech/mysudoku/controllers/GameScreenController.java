@@ -342,6 +342,18 @@ public class GameScreenController implements Initializable {
             }
         }
 
+        for (int j = 0; j < N; j++) {
+            Arrays.fill(unique, false);
+            for (int i = 0; i < N; i++) {
+                int Z = board[i][j];
+
+                if (unique[Z]) {
+                    return false;
+                }
+                unique[Z] = true;
+            }
+        }
+
         for (int i = 0; i < N - 2; i +=3) {
             for (int j = 0; j < N - 2; j += 3) {
                 Arrays.fill(unique, false);
@@ -368,7 +380,7 @@ public class GameScreenController implements Initializable {
         Board b = board.getBoard();
         int[][] gridint = new int[9][9];
         for (int i = 0; i < 9; i++) {
-            for (int j = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
                 Cell c = b.getCell(i, j);
                 gridint[i][j] = c.getValue();
             }
