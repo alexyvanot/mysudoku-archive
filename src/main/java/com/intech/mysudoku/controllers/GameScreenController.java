@@ -72,6 +72,8 @@ public class GameScreenController implements Initializable {
     Button exitGameButton;
     @FXML
     Button giveUpButton;
+    @FXML
+    Button solveButton;
     
     Timer time = new Timer("00:00:00");
     
@@ -135,6 +137,8 @@ public class GameScreenController implements Initializable {
         chronoText.setStyle("-fx-text-color: blue");
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
+
+        solveButton.setVisible(SettingsScreenController.isDeveloperMode());
 
     }
 
@@ -268,6 +272,32 @@ public class GameScreenController implements Initializable {
                 ex.printStackTrace();
             }
         });
+    }
+
+    public void handleSolve() {
+        if (clicked) {
+            return;
+        }
+
+        // Clear all user-entered values first so the cell count drops to the number
+        // of initial (pre-filled) cells, preventing premature win-check triggers.
+        for (IntField intField : grid.getIntFields()) {
+            if (!intField.isInitialCell() && intField.getCell().getValue() != 0) {
+                intField.getCell().setValue(0);
+                intField.setText("");
+            }
+        }
+
+        // Fill each editable cell with its solution value.
+        // The IntField value listener detects when all 81 cells are filled and
+        // triggers the existing verify() / handleShowWinScreen() pipeline exactly once.
+        for (IntField intField : grid.getIntFields()) {
+            if (!intField.isInitialCell()) {
+                int solution = intField.getCell().getSolution();
+                intField.getCell().setValue(solution);
+                intField.setText(String.valueOf(solution));
+            }
+        }
     }
 
     public void handleShowWinScreen() throws IOException {
