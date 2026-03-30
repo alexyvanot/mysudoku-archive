@@ -23,6 +23,8 @@ import javafx.stage.Stage;
 
 public class SettingsScreenController implements Initializable {
 
+    private static boolean developerMode = false;
+
     private Scene scene;
     TitleScreenController titleScreenController;
     Stage stage;
@@ -53,9 +55,17 @@ public class SettingsScreenController implements Initializable {
     Label colorAssistanceLabel;
     @FXML
     CheckBox colorAssistanceCheckBox;
+    @FXML
+    Label developerModeLabel;
+    @FXML
+    CheckBox developerModeCheckBox;
     
     // TODO
 //    MusicController mc = new MusicController();
+
+    public static boolean isDeveloperMode() {
+        return developerMode;
+    }
 
     public void setTitleScreenController (TitleScreenController titleScreenController) {
         this.titleScreenController = titleScreenController;
@@ -63,6 +73,7 @@ public class SettingsScreenController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        developerModeCheckBox.setSelected(developerMode);
 
         //TODO
 //        languageChoiceBox.getItems().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("Images/FR.png"))));
@@ -78,6 +89,10 @@ public class SettingsScreenController implements Initializable {
 
     public void toggleColorAssistanceCheckbox(ActionEvent event) {
     	
+    }
+
+    public void toggleDeveloperModeCheckBox(ActionEvent event) {
+        developerMode = developerModeCheckBox.isSelected();
     }
     
    public void handleShowMainMenu(ActionEvent event) throws IOException {
