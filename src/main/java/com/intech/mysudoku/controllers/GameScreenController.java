@@ -165,6 +165,15 @@ public class GameScreenController implements Initializable {
             return;
         }
         clicked = true;
+
+        // If the user has already correctly solved the puzzle, show the win screen
+        if (verify()) {
+            gaveUp = false;
+            timeline.stop();
+            handleShowWinScreen();
+            return;
+        }
+
         gaveUp = true; // Marquer comme abandon
         
         // Arrêter le timer
@@ -376,12 +385,10 @@ public class GameScreenController implements Initializable {
     }
 
     public boolean verify() {
-        BoardPane board = getBoardPane();
-        Board b = board.getBoard();
         int[][] gridint = new int[9][9];
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
-                Cell c = b.getCell(i, j);
+                Cell c = board.getCell(i, j);
                 gridint[i][j] = c.getValue();
             }
         }
